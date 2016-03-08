@@ -7,5 +7,22 @@ public class GamePlay {
 		}
 	}
 	//During battle sequence, make it a while loop
+	
+	public void MoveUp(){
+		
+	}
+	
+	public void MoveDown(){
+		
+	}
+	
+	public void MoveLeft(){
+		
+	}
+	
+	public void MoveRight(){
+		
+	}
 }	
+
 	
