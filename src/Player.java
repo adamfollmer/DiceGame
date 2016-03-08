@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-/*
-=======
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.Scanner;
 
 >>>>>>> ff3b110e01aae2f246ee165ff7c7122dad2958cc
@@ -58,9 +55,10 @@ public class Player extends Character{
 		 * } else {
 		 * totalDamage = spells[2].spellDamage * dice4;
 		 * } */
-	}
+	/*}
 	
 	public void limitBreak () {
 		//totalDamage = 50 * dice4;
 	}
-}*/
+}
+*/
