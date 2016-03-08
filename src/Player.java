@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 import java.util.Scanner;
 
 public class Player extends Character{
@@ -60,7 +61,9 @@ public class Player extends Character{
 	public void limitBreak () {
 		//totalDamage = 50 * dice4;
 	}
-	
+
+
+
 	public boolean playerIsDead () {
 		if (health > 0){
 			return true;
@@ -69,3 +72,4 @@ public class Player extends Character{
 		}
 	}
 }
+
