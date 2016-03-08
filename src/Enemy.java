@@ -9,6 +9,15 @@ public class Enemy extends Character{
 		treasure = Treasure;
 	}
 
+	public void attackPlayer (Player player) {
+		player.health = player.health - attack;
+	}
 	
-	
+	public boolean enemyIsDead () {
+		if (health > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
