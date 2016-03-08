@@ -10,6 +10,7 @@ public class Player extends Character{
 	Spell fireball = new Spell ("Fireball", 3);
 	Spell[] spells = {arcaneBlast, frostbolt, fireball};
 	int limitBreakStatus = 0;
+	int health = 100;
 	
 	public Player (String name, int health) {
 		super(name, health);

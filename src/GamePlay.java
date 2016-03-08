@@ -6,6 +6,6 @@ public class GamePlay {
 			
 		}
 	}
-	//During battle sequence, make it a while loop
+	
 }	
 	
