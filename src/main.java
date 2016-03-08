@@ -5,9 +5,13 @@ public class main {
 		// TODO Auto-generated method stub
 		Map map = new Map();
 		map.PrintMap();
+		Player player = new Player("Player 1", 100);
 		
-		map.MapLocation();	
-			
+		//map.MapLocation();
+		player.MoveUp(map);
+		//map.MapLocation();
+		System.out.println();
+		map.PrintMap();	
 	}
 
 }

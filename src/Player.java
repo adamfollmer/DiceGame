@@ -12,11 +12,14 @@ public class Player extends Character{
 	Spell[] spells = {arcaneBlast, frostbolt, fireball};
 	int limitBreakStatus = 0;
 	int health = 100;
-	
+
+	int xCoordiante = 0;
+	int yCoordinate = 0;
+
 	public Player (String name, int health) {
 		super(name, health);
 	}
-	
+
 	public void status () {
 		System.out.println("Your character's name is: " + name);
 		System.out.println("Your health is at " + health + "/100");
@@ -24,7 +27,7 @@ public class Player extends Character{
 				"\n Your armor: " + armor.armorName + ". It has bonus defense of " + armor.armorBonus);
 		System.out.println("Your limit break meter is at " + limitBreakStatus);
 	}
-	
+
 	public void selectAttack () {
 		Scanner scanner = new Scanner (System.in);
 		String userInput = scanner.nextLine().toUpperCase();
@@ -37,17 +40,17 @@ public class Player extends Character{
 			break;
 		case ("LIMITBREAK"):
 			limitBreak();
-			break;
+		break;
 		default:
 			System.out.println("You shouldn't see this");
 			break;
 		}
 	}
-	
+
 	public void physicalAttack () {
 		//totalDamage = dice8 * dice4 + player.weapon.attackDamage
 	}
-	
+
 	public void magicAttack () {
 		/*if (dice10 <= 3) {
 		 * totalDamage = spells[0].spellDamage * dice4;
@@ -57,7 +60,7 @@ public class Player extends Character{
 		 * totalDamage = spells[2].spellDamage * dice4;
 		 * } */
 	}
-	
+
 	public void limitBreak () {
 		//totalDamage = 50 * dice4;
 	}
@@ -71,5 +74,35 @@ public class Player extends Character{
 			return false;
 		}
 	}
+
+	public void MoveUp(Map map){
+		xCoordiante = ((Map) map).getXCoordinate();
+		yCoordinate = ((Map) map).getYCoordinate();
+
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante-1][yCoordinate ]= "O";
+
+	}
+
+	public void MoveDown(Map map){
+		xCoordiante = map.getXCoordinate();
+		yCoordinate = map.getYCoordinate();
+
+		map.map[xCoordiante+1][yCoordinate ]= "O";
+	}
+
+	public void MoveLeft(Map map){
+		xCoordiante = map.getXCoordinate();
+		yCoordinate = map.getYCoordinate();
+	}
+
+	public void MoveRight(Map map){
+		xCoordiante = map.getXCoordinate();
+		yCoordinate = map.getYCoordinate();
+	}
+
+
+
+
 }
 
