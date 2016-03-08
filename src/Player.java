@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-/*
-=======
 import java.util.ArrayList;
 import java.util.Scanner;
 
->>>>>>> ff3b110e01aae2f246ee165ff7c7122dad2958cc
 public class Player extends Character{
 	ArrayList<String> backpack = new ArrayList<String>();
 	Weapon weapon = new Weapon ("Starter Sword", 1);
@@ -63,4 +59,4 @@ public class Player extends Character{
 	public void limitBreak () {
 		//totalDamage = 50 * dice4;
 	}
-}*/
+}
