@@ -1,4 +1,4 @@
-
+/*
 public class Player extends Character{
 	ArrayList backpack;
 	Weapon weapon = starterWeapon;
@@ -9,4 +9,4 @@ public class Player extends Character{
 	public Player () {
 		super();as
 	}
-}
+}*/
