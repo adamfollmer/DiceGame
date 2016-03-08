@@ -1,12 +1,12 @@
 
 public class Enemy extends Character{
 	int attack;
-	String treasure;
+	Treasure treasure = new Treasure();
 	
-	Enemy(String Name, int Health, int Attack, String Treasure) {
+	Enemy(String Name, int Health, int Attack) {
 		super(Name, Health);
 		attack = Attack;
-		treasure = Treasure;
+		
 	}
 
 	public void attackPlayer (Player player) {
@@ -20,4 +20,6 @@ public class Enemy extends Character{
 			return false;
 		}
 	}
+	
+	
 }
