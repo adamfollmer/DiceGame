@@ -36,14 +36,13 @@ public class GamePlay {
 			} else if (answer.equals("p")) {
 				int option = humanOrAI();
 
-				if(option == 1){
+				if (option == 1) {
 					player1.name = playerName();
 					player2.name = playerName();
 					player2.playerTwoTurn = true;
 					computer.computerTurn = false;
 
-				}
-				else if (option == 2){
+				} else if (option == 2) {
 					player1.name = playerName();
 					computer.name = "Computer";
 					player2.playerTwoTurn = false;
@@ -78,19 +77,24 @@ public class GamePlay {
 	public void battleSequence(Player player, Enemy enemy) {
 		System.out.println("You encountered a " + enemy.name);
 		Random rand = new Random();
-		while (player.playerIsDead() == false && enemy.enemyIsDead() == false) {
+		while (player.health >= 0 && enemy.health >= 0) {
+			player.combatRollAndStats(enemy);
 			if (rand.nextInt(1) == 0) {
 				enemy.attackPlayer(player);
+				player.selectAttack(enemy);
 			} else {
 				player.selectAttack(enemy);
+				enemy.attackPlayer(player);
 			}
-			System.out.println("Rerolling to set up a new attack!");
-			player.getDice();
-			player.combatRollAndStats(enemy);
+			if (enemy.health >= 0) {
+				System.out.println("Rerolling to set up a new attack!");
+				player.getDice();
+			}
 		}
 		if (enemy.enemyIsDead() == true) {
 			Chest chest = enemy.treasure.chest;
 			System.out.println("The enemy dropped a chest!");
+			player.CheckTreasure(chest);
 
 		}
 	}
@@ -110,13 +114,14 @@ public class GamePlay {
 
 		Scanner scan = new Scanner(System.in);
 		int moveCounter = player.playerDice[1].roll;
-		
-		System.out.println("Moves left "+moveCounter);
+
+		System.out.println("Moves left " + moveCounter);
 		while (isTurn) {
 			if(moveCounter <= 1){
+
 				isTurn = false;
 			}
-			
+
 			System.out.println("Up [w] Down [s] Left [a] Right [d]");
 			String playerMove = scan.next();
 
@@ -134,7 +139,7 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
-
+				
 				} else if (atTopRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
@@ -300,8 +305,7 @@ public class GamePlay {
 					enterDoor(player);
 					moveCounter--;
 				}
-			} 
-			else {
+			} else {
 				map.PrintMap();
 				System.out.println("Invalid Entry");
 			}
@@ -367,7 +371,6 @@ public class GamePlay {
 	 * }
 	 */
 
-
 	public void PlayerTurn(Player player, Map map) {
 
 		player.getDice();
@@ -377,7 +380,7 @@ public class GamePlay {
 		map.PrintMap();
 		PlayerControl(player, map);
 	}
-	
+
 	public void ComputerTurn(AI computer, Map map, GamePlay gamePlay) {
 		computer.getDice();
 		System.out.println(computer.name + ":");
@@ -385,24 +388,22 @@ public class GamePlay {
 		System.out.println();
 		computer.ComputerControl(computer, map, gamePlay);
 	}
-	
-	public void GameTurn(Player player1, Player player2, AI computerPlayer, Map map, GamePlay gamePlay){
-	boolean stillPlay = true;
-		
-		while(player1.playerOneTurn || player2.playerTwoTurn || stillPlay ||computerPlayer.computerTurn){
-			if(player1.playerOneTurn){
+
+	public void GameTurn(Player player1, Player player2, AI computerPlayer, Map map, GamePlay gamePlay) {
+		boolean stillPlay = true;
+
+		while (player1.playerOneTurn || player2.playerTwoTurn || stillPlay || computerPlayer.computerTurn) {
+			if (player1.playerOneTurn) {
 				System.out.println();
 				PlayerTurn(player1, map);
 				player1.playerOneTurn = false;
-			}
-			else if (player2.playerTwoTurn){
+			} else if (player2.playerTwoTurn) {
 				System.out.println();
 				PlayerTurn(player2, map);
 				player1.playerOneTurn = true;
 				player2.playerTwoTurn = false;
 				computerPlayer.computerTurn = false;
-			}
-			else if (computerPlayer.computerTurn){
+			} else if (computerPlayer.computerTurn) {
 				System.out.println();
 				ComputerTurn(computerPlayer, map, gamePlay);
 				player1.playerOneTurn = true;
