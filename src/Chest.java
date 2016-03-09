@@ -5,4 +5,6 @@ public class Chest {
 	public Chest (String Name){
 		name = Name;
 	}
+	
 }
+	

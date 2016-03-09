@@ -1,20 +1,20 @@
 import java.util.Random;
 
 public class Treasure {
-
+		Chest chest;
 	public Treasure() {
-		this.populateTreasure();
+		chest = this.populateTreasure();
 	}
 
-	public void populateTreasure() {
+	public Chest populateTreasure() {
 		Random rand = new Random();
 		int value = rand.nextInt(3);
 		if (value == 0) {
-			this.randomWeapon();
+			return this.randomWeapon();
 		} else if (value == 1) {
-			this.randomArmor();
+			return this.randomArmor();
 		} else {
-			this.randomItem();
+			return this.randomItem();
 		}
 	}
 

@@ -89,6 +89,9 @@ public class GamePlay {
 			player.getDice();
 			player.combatRollAndStats(enemy);
 		}
+		if (enemy.enemyIsDead() == true){
+			Chest chest = enemy.treasure.chest;
+		}
 	}
 
 	public void PlayerControl(Player player, Map map) {
