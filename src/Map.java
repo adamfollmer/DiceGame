@@ -4,8 +4,8 @@ public class Map {
 	int yCoordinate = 0;
 	
 	// String[][]Map = new String[5][5]
-	String[][] map = { { "X", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" },
-			{ "X", "X", "O", "X", "X" }, { "X", "X", "X", "X", "X" } };
+	String[][] map = { { "O", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" },
+			{ "X", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" } };
 
 	public void PrintMap() {
 		for (int i = 0; i < map.length; i++) {
@@ -18,9 +18,6 @@ public class Map {
 
 public void MapLocation(int x, int y, Map map){
 		//map[x]][y] = "O";
-	
-	
-	
 		String location = "unknown";
 		for(int i = 0; i<map.map.length; i++){
 			for(int j = 0; j<map.map.length;j++){
@@ -42,7 +39,6 @@ public void MapLocation(int x, int y, Map map){
 		for(int i = 0; i<map.length; i++){
 			for(int j = 0; j<map.length;j++){
 				if(map[i][j] == "O"){
-					//location = Map[i][j];
 					return xCoordinate = i;
 				}
 			}
@@ -55,7 +51,6 @@ public void MapLocation(int x, int y, Map map){
 		for(int i = 0; i<map.length; i++){
 			for(int j = 0; j<map.length;j++){
 				if(map[i][j] == "O"){
-					//location = Map[i][j];
 					return yCoordinate = j;
 				}
 			}

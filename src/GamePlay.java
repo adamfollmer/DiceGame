@@ -47,8 +47,35 @@ public class GamePlay {
 	}
 
 	//During battle sequence, make it a while loop
-	
-	
+	public void PlayerControl(Player player, Map map){
+		boolean control = true;
+		Scanner scan = new Scanner(System.in);
+		while(control){
+			System.out.println("Up [w] Down [s] Left [a] Right [d]");
+			String playerMove = scan.next();
+			
+			if(playerMove.equals("w")){
+				player.MoveUp(map);
+				map.PrintMap();
+			}
+			else if(playerMove.equals("s")){
+				player.MoveDown(map);
+				map.PrintMap();
+			}
+			else if(playerMove.equals("a")){
+				player.MoveLeft(map);
+				map.PrintMap();
+			}
+			else if(playerMove.equals("d")){
+				player.MoveRight(map);
+				map.PrintMap();
+			}
+			else{
+				System.out.println("Invalid Entry");
+			}
+			
+		}
+	}
 }	
 
 	

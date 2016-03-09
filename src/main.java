@@ -7,11 +7,17 @@ public class main {
 		map.PrintMap();
 		Player player = new Player("Player 1", 100);
 		
+		GamePlay control = new GamePlay();
+		
+		control.PlayerControl(player, map);
 		//map.MapLocation();
-		player.MoveUp(map);
+		//player.MoveDown(map);
+		//player.MoveRight(map);
+		//player.MoveRight(map);
+		//player.MoveDown(map);
 		//map.MapLocation();
-		System.out.println();
-		map.PrintMap();	
+		//System.out.println();
+		//map.PrintMap();	
 	}
 
 }

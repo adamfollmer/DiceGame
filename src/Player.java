@@ -87,18 +87,25 @@ public class Player extends Character{
 	public void MoveDown(Map map){
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
-
+		
+		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante+1][yCoordinate ]= "O";
 	}
 
 	public void MoveLeft(Map map){
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
+		
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante][yCoordinate-1]= "O";
 	}
 
 	public void MoveRight(Map map){
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
+		
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
 
 
