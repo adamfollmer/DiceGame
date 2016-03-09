@@ -74,6 +74,7 @@ public class GamePlay {
 		}
 		if (enemy.enemyIsDead() == true) {
 			Chest chest = enemy.treasure.chest;
+			System.out.println("The enemy dropped a chest!");
 
 		}
 	}
@@ -290,8 +291,8 @@ public class GamePlay {
 		}
 	}
 
-	public Treasure randomTreasure() {
-		return new Treasure();
+	public Chest randomTreasure() {
+		return new Treasure().chest;
 	}
 
 	public void enterDoor(Player player) {
@@ -303,7 +304,7 @@ public class GamePlay {
 			break;
 		case 1:
 			System.out.println("You found a treasure chest!");
-			CheckTreasure(randomTreasure());
+			player.CheckTreasure(randomTreasure());
 			break;
 		default:
 			System.out.println("You entered an empty room.");
@@ -312,8 +313,5 @@ public class GamePlay {
 		}
 	}
 
-	public void CheckTreasure(Treasure treasure) {
-		// if(Weapon instanceof Chest){
 
-	}
 }

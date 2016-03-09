@@ -1,8 +1,8 @@
 
 public class Armor extends Chest {
 	
-	public Armor (String Name, int ArmorBonus) {
-		super (Name, ArmorBonus);
+	public Armor (String Name, int ArmorBonus, String Armor) {
+		super (Name, ArmorBonus, Armor);
 		
 	}
 }
