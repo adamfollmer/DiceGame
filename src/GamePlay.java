@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class GamePlay {
@@ -73,6 +74,55 @@ public class GamePlay {
 				System.out.println("Invalid Entry");
 			}
 			
+		}
+	}
+	
+	public Enemy randomEnemy() {
+		Random rand = new Random();
+		int value = rand.nextInt(10);
+		switch (value) {
+		case 0:
+			return new Enemy("Bandit", 10, 3);
+		case 1:
+			return new Enemy("Gremlin", 15, 4);
+		case 2:
+			return new Enemy("Smogger", 20, 4);
+		case 3:
+			return new Enemy("Wolf", 25, 5);
+		case 4:
+			return new Enemy("Golem", 30, 6);
+		case 5:
+			return new Enemy("Aerostriker", 5, 40);
+		case 6:
+			return new Enemy("Zombie", 50, 5);
+		case 7:
+			return new Enemy("Gargoyle", 40, 10);
+		case 8:
+			return new Enemy("Behemoth", 50, 10);
+		case 9:
+			return new Enemy("Diablo", 100, 20);
+		default:
+			return new Enemy("Cactuar", 100, 1);
+		}
+	}
+	public Treasure randomTreasure(){
+		return new Treasure();
+	}
+	
+	public void enterDoor() {
+		Random rand = new Random();
+		int value = rand.nextInt(3);
+		switch (value) {
+		case 0: 
+			randomEnemy();
+			break;
+		case 1:
+			randomTreasure();
+			break;
+		default:
+			System.out.println("You entered an empty room.");
+			System.out.println();
+			break;
 		}
 	}
 }	
