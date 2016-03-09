@@ -323,8 +323,14 @@ public class GamePlay {
 
 	}
 	
-	public void CreatePlayer(){
-		
-	}
+	/*public void CreatePlayer(){
+		Player player1 = new Player("Player1", 100);
+	}*/
 	
+	public void PlayerTurn(Player player, Map map){
+		player.getDice();
+		player.whatDidIRoll();
+		map.PrintMap();
+		PlayerControl(player,map);
+	}
 }

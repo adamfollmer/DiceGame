@@ -8,8 +8,8 @@ public class main {
 		
 		GamePlay gamePlay = new GamePlay();
 		gamePlay.printInstructions();
-		map.PrintMap();
-		gamePlay.PlayerControl(player, map);
+		gamePlay.PlayerTurn(player, map);
+		//gamePlay.PlayerControl(player, map);
 		
 	}
 

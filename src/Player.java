@@ -15,6 +15,7 @@ public class Player extends Character{
 	int xCoordiante = 0;
 	int yCoordinate = 0;
 	Dice[] playerDice = new Dice[6];
+	boolean isTurn = true;
 
 	public Player (String name, int health) {
 		super(name, health);
@@ -81,7 +82,7 @@ public class Player extends Character{
 		yCoordinate = ((Map) map).getYCoordinate();
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante-1][yCoordinate ]= "O";
+		map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "O";
 
 	}
 
@@ -90,7 +91,7 @@ public class Player extends Character{
 		yCoordinate = map.getYCoordinate();
 
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante+1][yCoordinate ]= "O";
+		map.map[xCoordiante+playerDice[1].roll][yCoordinate ]= "O";
 	}
 
 	public void MoveLeft(Map map){
@@ -99,7 +100,7 @@ public class Player extends Character{
 		
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante][yCoordinate-1]= "O";
+		map.map[xCoordiante][yCoordinate-playerDice[1].roll]= "O";
 		
 	}
 
@@ -108,7 +109,7 @@ public class Player extends Character{
 		yCoordinate = map.getYCoordinate();
 
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante][yCoordinate+1]= "O";
+		map.map[xCoordiante][yCoordinate+playerDice[1].roll]= "O";
 	}
 	
 /*----------------------------------------------------------------*/
@@ -131,20 +132,20 @@ public class Player extends Character{
 	}
 	
 	public void whatDidIRoll () {
-		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0]);
-		System.out.println("Your MOVEMENT die: " + playerDice[1]);
-		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2]);
-		System.out.println("Your MAGIC ATTACK die: " + playerDice[3]);
-		System.out.println("Your DEFENSE BONUS die: " + playerDice[4]);
-		System.out.println("Your LIMIT BREAK die: " + playerDice[5]);
+		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0].roll);
+		System.out.println("Your MOVEMENT die: " + playerDice[1].roll);
+		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2].roll);
+		System.out.println("Your MAGIC ATTACK die: " + playerDice[3].roll);
+		System.out.println("Your DEFENSE BONUS die: " + playerDice[4].roll);
+		System.out.println("Your LIMIT BREAK die: " + playerDice[5].roll);
 			
 	}
 	public void combatRollAndStats(Enemy enemy) {
-		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0]);
-		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2]);
-		System.out.println("Your MAGIC ATTACK die: " + playerDice[3]);
-		System.out.println("Your DEFENSE BONUS die: " + playerDice[4]);
-		System.out.println("Your LIMIT BREAK die: " + playerDice[5]);
+		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0].roll);
+		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2].roll);
+		System.out.println("Your MAGIC ATTACK die: " + playerDice[3].roll);
+		System.out.println("Your DEFENSE BONUS die: " + playerDice[4].roll);
+		System.out.println("Your LIMIT BREAK die: " + playerDice[5].roll);
 		System.out.println();
 		System.out.println("Health: " + health + "/100");
 		System.out.println("Limit Break: " + limitBreakStatus + "/100");
