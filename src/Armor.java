@@ -1,10 +1,9 @@
 
-public class Armor {
-	String armorName;
+public class Armor extends Chest {
 	int armorBonus;
 	
-	public Armor (String ArmorName, int ArmorBonus) {
-		armorName = ArmorName;
+	public Armor (String Name, int ArmorBonus) {
+		super (Name);
 		armorBonus = ArmorBonus;
 	}
 }

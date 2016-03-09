@@ -77,6 +77,7 @@ public class GamePlay {
 	}
 
 	public void battleSequence(Player player, Enemy enemy) {
+		System.out.println("You encountered a " + enemy.name);
 		Random rand = new Random();
 		while (player.playerIsDead() == false && enemy.enemyIsDead() == false) {
 			if (rand.nextInt(1) == 0) {
@@ -138,12 +139,12 @@ public class GamePlay {
 					player.MoveUp(map);
 				} else if (atTopEdge) {
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atBottomLeftCorner){
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atTopEdge){
 					map.PrintMap();
@@ -154,12 +155,12 @@ public class GamePlay {
 					player.MoveUp(map);
 				} else if (atRightEdge) {
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atleftEdge){
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 
 				else {
@@ -168,13 +169,13 @@ public class GamePlay {
 				else if (atRightEdge){
 					player.MoveUp(map);	
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 
 				else{
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 			} else if (playerMove.equals("s")) {
 				/*
@@ -268,12 +269,12 @@ public class GamePlay {
 				if(atTopLeftCorner){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if(atTopRightCorner){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atBottomRightCorner){
 					map.PrintMap();
@@ -286,7 +287,7 @@ public class GamePlay {
 				else if (atTopEdge){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if(atBottomEdge){
 					map.PrintMap();
@@ -295,17 +296,17 @@ public class GamePlay {
 				else if (atleftEdge){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atRightEdge){
 					player.MoveDown(map);	
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else{
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 			}
 			else if(playerMove.equals("a")){
@@ -316,13 +317,13 @@ public class GamePlay {
 				else if(atTopRightCorner){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 
 				}
 				else if (atBottomRightCorner){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atBottomLeftCorner){
 					map.PrintMap();
@@ -335,7 +336,7 @@ public class GamePlay {
 				else if(atBottomEdge){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atleftEdge){
 					map.PrintMap();
@@ -344,12 +345,12 @@ public class GamePlay {
 				else if (atRightEdge){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else{
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 
 			}
@@ -358,7 +359,7 @@ public class GamePlay {
 				if(atTopLeftCorner){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if(atTopRightCorner){
 					map.PrintMap();
@@ -371,22 +372,22 @@ public class GamePlay {
 				else if (atBottomLeftCorner){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atTopEdge){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if(atBottomEdge){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atleftEdge){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 				else if (atRightEdge){
 					map.PrintMap();
@@ -395,7 +396,7 @@ public class GamePlay {
 				else{
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor();
+					enterDoor(player);
 				}
 			}
 			else{
@@ -411,37 +412,26 @@ public class GamePlay {
 		int value = rand.nextInt(10);
 		switch (value) {
 		case 0:
-			System.out.println("You encounted a Bandit!");
 			return new Enemy("Bandit", 10, 3);
 		case 1:
-			System.out.println("You encounted a Gremlin!");
 			return new Enemy("Gremlin", 15, 4);
 		case 2:
-			System.out.println("You encounted a Smogger!");
 			return new Enemy("Smogger", 20, 4);
 		case 3:
-			System.out.println("You encounted a Wolf!");
 			return new Enemy("Wolf", 25, 5);
 		case 4:
-			System.out.println("You encounted a Golem!");
 			return new Enemy("Golem", 30, 6);
 		case 5:
-			System.out.println("You encounted a Aerostiker!");
 			return new Enemy("Aerostriker", 5, 40);
 		case 6:
-			System.out.println("You encounted a Zombie!");
 			return new Enemy("Zombie", 50, 5);
 		case 7:
-			System.out.println("You encounted a Gargoyle!");
 			return new Enemy("Gargoyle", 40, 10);
 		case 8:
-			System.out.println("You encounted a Behemoth!");
 			return new Enemy("Behemoth", 50, 10);
 		case 9:
-			System.out.println("You encounted a Diablo!");
 			return new Enemy("Diablo", 100, 20);
 		default:
-			System.out.println("You encounted a Cactuar!");
 			return new Enemy("Cactuar", 100, 1);
 		}
 	}
@@ -451,12 +441,13 @@ public class GamePlay {
 		return new Treasure();
 	}
 
-	public void enterDoor() {
+	public void enterDoor(Player player) {
 		Random rand = new Random();
 		int value = rand.nextInt(3);
 		switch (value) {
 		case 0:
-			randomEnemy();
+			battleSequence(player, randomEnemy());
+			System.out.println();
 			break;
 		case 1:
 			System.out.println("You found a treasure chest!");

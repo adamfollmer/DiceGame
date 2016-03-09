@@ -1,10 +1,9 @@
 
-public class Weapon {
-	String weaponName;
+public class Weapon extends Chest{
 	int attackDamage;
 	
 	public Weapon (String Name, int Attack){
-		weaponName = Name;
+		super (Name);
 		attackDamage = Attack;
 	}
 }

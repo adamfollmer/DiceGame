@@ -8,7 +8,7 @@ public class Enemy extends Character{
 		attack = Attack;
 		
 	}
-	//Likely need to inflate enemy attack values 
+	//Likely need to inflate enemy attack values because defense is so high
 	public void attackPlayer (Player player) {
 		int defense = player.playerDice[4].roll + player.armor.armorBonus;
 		if (attack - defense < 1) {

@@ -1,10 +1,9 @@
 
-public class Item {
-	String itemName;
+public class Item extends Chest{
 	int healAmount;
 	
 	public Item (String Name, int HealAmount){
-		itemName = Name;
+		super (Name);
 		healAmount = HealAmount;
 	}
 }

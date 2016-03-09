@@ -23,8 +23,8 @@ public class Player extends Character{
 	public void status () {
 		System.out.println("Your character's name is: " + name);
 		System.out.println("Your health is at " + health + "/100");
-		System.out.println("Your weapon: " + weapon.weaponName + ". It has a bonus attack of " + weapon.attackDamage +
-				"\n Your armor: " + armor.armorName + ". It has bonus defense of " + armor.armorBonus);
+		System.out.println("Your weapon: " + weapon.name + ". It has a bonus attack of " + weapon.attackDamage +
+				"\n Your armor: " + armor.name + ". It has bonus defense of " + armor.armorBonus);
 		System.out.println("Your limit break meter is at " + limitBreakStatus);
 	}
 
