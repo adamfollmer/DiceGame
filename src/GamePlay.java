@@ -57,18 +57,22 @@ public class GamePlay {
 			if(playerMove.equals("w")){
 				player.MoveUp(map);
 				map.PrintMap();
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
 			}
 			else if(playerMove.equals("s")){
 				player.MoveDown(map);
 				map.PrintMap();
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
 			}
 			else if(playerMove.equals("a")){
 				player.MoveLeft(map);
 				map.PrintMap();
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
 			}
 			else if(playerMove.equals("d")){
 				player.MoveRight(map);
 				map.PrintMap();
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
 			}
 			else{
 				System.out.println("Invalid Entry");
