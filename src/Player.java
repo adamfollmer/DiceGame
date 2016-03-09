@@ -114,8 +114,13 @@ public class Player extends Character{
 /*----------------------------------------------------------------*/
 	/*public void roll (DiceCup diceCup) {
 		for (int i = 0; i < diceCup.diceArray.length; i++){
+<<<<<<< HEAD
+			diceCup.diceArray[i].Roll();
+		
+=======
 			diceCup.diceArray[i].Roll();*/
 	//I don't think we need the above function anymore, will use getDice for rolling.
+
 
 		public void getDice () {
 		DiceCup diceCup = new DiceCup();
@@ -149,44 +154,17 @@ public class Player extends Character{
 	}
 
 	
-/*
-	public void TopEdgeMoves(Player player, Map map){
-		player.MoveLeft(map);
-		player.MoveDown(map);
-		player.MoveRight(map);
+	public void OpenTreasure(){
+		
 	}
-	public void BottomEdgeMoves(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveLeft(map);
-		player.MoveRight(map);
-	}
-	public void LeftEdgeMoves(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveDown(map);
-		player.MoveRight(map);
-	}
-	public void RightEdgeMoves(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveDown(map);
-		player.MoveLeft(map);
-	}
-	public void TopLeftCorner(Player player, Map map){
-		player.MoveRight(map);
-		player.MoveDown(map);
-	}
-	public void TopRightCorner(Player player, Map map){
-		player.MoveLeft(map);
-		player.MoveDown(map);
-	}
-	public void BottomLeftCorner(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveRight(map);
-	}
+
+
+	
+
 	public void BottomRightCorner(Player player, Map map){
 		player.MoveUp(map);
 		player.MoveLeft(map);
-	}*/
+	}
 	
-
 }
 
