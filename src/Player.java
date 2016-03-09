@@ -23,8 +23,8 @@ public class Player extends Character{
 	public void status () {
 		System.out.println("Your character's name is: " + name);
 		System.out.println("Your health is at " + health + "/100");
-		System.out.println("Your weapon: " + weapon.name + ". It has a bonus attack of " + weapon.attackDamage +
-				"\n Your armor: " + armor.name + ". It has bonus defense of " + armor.armorBonus);
+		System.out.println("Your weapon: " + weapon.name + ". It has a bonus attack of " + weapon.generalStatBoost +
+				"\n Your armor: " + armor.name + ". It has bonus defense of " + armor.generalStatBoost);
 		System.out.println("Your limit break meter is at " + limitBreakStatus);
 	}
 
@@ -49,7 +49,7 @@ public class Player extends Character{
 	}
 
 	public void physicalAttack (Enemy enemy) {
-		enemy.health = enemy.health - (playerDice[2].roll * playerDice[0].roll + weapon.attackDamage);
+		enemy.health = enemy.health - (playerDice[2].roll * playerDice[0].roll + weapon.generalStatBoost);
 	}
 
 	public void magicAttack (Enemy enemy) {

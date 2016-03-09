@@ -10,7 +10,7 @@ public class Enemy extends Character{
 	}
 	//Likely need to inflate enemy attack values because defense is so high
 	public void attackPlayer (Player player) {
-		int defense = player.playerDice[4].roll + player.armor.armorBonus;
+		int defense = player.playerDice[4].roll + player.armor.generalStatBoost;
 		if (attack - defense < 1) {
 			System.out.println(player.name + "'s defense is so high," + name + "'s attack did no damage.");
 			System.out.println();
