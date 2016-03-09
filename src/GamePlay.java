@@ -36,9 +36,14 @@ public class GamePlay {
 			} else if (answer.equals("p")) {
 				int option = humanOrAI();
 
+<<<<<<< HEAD
 				if(option == 1){
 					player1.name = playerName();
 					player2.name = playerName();
+=======
+				if (option == 1) {
+					playerName();
+>>>>>>> a2a1c737e400f1f08e93181f686a742c4cce7594
 				}
 
 				gameStartMenu = false;
@@ -80,6 +85,7 @@ public class GamePlay {
 		}
 		if (enemy.enemyIsDead() == true) {
 			Chest chest = enemy.treasure.chest;
+			System.out.println("The enemy dropped a chest!");
 
 		}
 	}
@@ -297,8 +303,8 @@ public class GamePlay {
 		}
 	}
 
-	public Treasure randomTreasure() {
-		return new Treasure();
+	public Chest randomTreasure() {
+		return new Treasure().chest;
 	}
 
 	public void enterDoor(Player player) {
@@ -310,8 +316,8 @@ public class GamePlay {
 			break;
 		case 1:
 			System.out.println("You found a treasure chest!");
-			//CheckTreasure(randomTreasure());
-			randomTreasure().PrintTreasure();
+			player.CheckTreasure(randomTreasure());
+
 			break;
 		default:
 			System.out.println("You entered an empty room.");
@@ -320,9 +326,12 @@ public class GamePlay {
 		}
 	}
 
-	public void CheckTreasure(Treasure treasure) {
-		// if(Weapon instanceof Chest){
+	/*
+	 * public void CreatePlayer(){ Player player1 = new Player("Player1", 100);
+	 * }
+	 */
 
+<<<<<<< HEAD
 	}
 
 	/*public void CreatePlayer(){
@@ -330,11 +339,14 @@ public class GamePlay {
 	}*/
 
 	public void PlayerTurn(Player player, Map map){
+=======
+	public void PlayerTurn(Player player, Map map) {
+>>>>>>> a2a1c737e400f1f08e93181f686a742c4cce7594
 		player.getDice();
 		System.out.println(player.name + ":");
 		player.whatDidIRoll();
 		System.out.println();
 		map.PrintMap();
-		PlayerControl(player,map);
+		PlayerControl(player, map);
 	}
 }
