@@ -28,18 +28,19 @@ public class Player extends Character{
 		System.out.println("Your limit break meter is at " + limitBreakStatus);
 	}
 
-	public void selectAttack () {
+	public void selectAttack (Enemy enemy) {
+		System.out.println("Which attack will you use: PHYSICAL, MAGIC, or LIMITBREAK?");
 		Scanner scanner = new Scanner (System.in);
 		String userInput = scanner.nextLine().toUpperCase();
 		switch (userInput) {
 		case "PHYSICAL":
-			physicalAttack();
+			physicalAttack(enemy);
 			break;
 		case "MAGIC":
-			magicAttack();
+			magicAttack(enemy);
 			break;
 		case ("LIMITBREAK"):
-			limitBreak();
+			limitBreak(enemy);
 		break;
 		default:
 			System.out.println("You shouldn't see this");
@@ -47,25 +48,25 @@ public class Player extends Character{
 		}
 	}
 
-	public void physicalAttack () {
-		//totalDamage = dice8 * dice4 + player.weapon.attackDamage
+	public void physicalAttack (Enemy enemy) {
+		enemy.health = enemy.health - (playerDice[2].roll * playerDice[0].roll + weapon.attackDamage);
 	}
 
-	public void magicAttack () {
-		/*if (dice10 <= 3) {
-		 * totalDamage = spells[0].spellDamage * dice4;
-		 * } else if (dice 10 <= 7) {
-		 * totalDamage = spells[1].spellDamage * dice4;
-		 * } else {
-		 * totalDamage = spells[2].spellDamage * dice4;
-		 * } */
+	public void magicAttack (Enemy enemy) {
+		if (playerDice[3].roll <= 3) {
+			enemy.health = enemy.health - (spells[0].spellDamage * playerDice[0].roll);
+		  } else if (playerDice[3].roll <= 7) {
+			  enemy.health = enemy.health - (spells[1].spellDamage * playerDice[0].roll);
+		  } else {
+			  enemy.health = enemy.health - (spells[2].spellDamage * playerDice[0].roll);
+		  } 
 	}
 
-	public void limitBreak () {
-		//totalDamage = 50 * dice4;
+	public void limitBreak (Enemy enemy) {
+		if (limitBreakStatus >= 100) {
+			enemy.health = enemy.health - (50 * playerDice[0].roll);
+		}
 	}
-
-
 
 	public boolean playerIsDead () {
 		if (health > 0){
@@ -172,6 +173,6 @@ public class Player extends Character{
 		player.MoveLeft(map);
 	}*/
 	
-	
+
 }
 
