@@ -131,6 +131,10 @@ public class Player extends Character{
 		System.out.println("Your TWENTY sided die: " + playerDice[5]);
 			
 	}
+	
+	public void OpenTreasure(){
+		
+	}
 
 	
 }

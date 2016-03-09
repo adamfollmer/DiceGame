@@ -92,139 +92,185 @@ public class GamePlay {
 
 			if(playerMove.equals("w")){
 				if(atTopLeftCorner){
+					map.PrintMap();
 					System.out.println("You can't move up anymore");
+					
 				}
 				else if(atTopRightCorner){
+					map.PrintMap();
 					System.out.println("You can't move up anymore");
 				}
 				else if (atBottomRightCorner){
 					player.MoveUp(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atBottomLeftCorner){
 					player.MoveUp(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atTopEdge){
+					map.PrintMap();
 					System.out.println("You can't move up anymore");
 				}
 				else if(atBottomEdge){
 					player.MoveUp(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atleftEdge){
 					player.MoveUp(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atRightEdge){
 					player.MoveUp(map);	
+					map.PrintMap();
+					enterDoor();
 				}
 
 				else{
 					player.MoveUp(map);
+					map.PrintMap();
+					enterDoor();
 				}
-				map.PrintMap();
 
 			}
 			else if(playerMove.equals("s")){
-				/*player.MoveDown(map);
-				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());*/
+		
 				if(atTopLeftCorner){
-					player.MoveDown(map);	
+					player.MoveDown(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if(atTopRightCorner){
-					player.MoveDown(map);	
+					player.MoveDown(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atBottomRightCorner){
-					System.out.println("You can't move down anymore (bottomRightCorner)");		
+					map.PrintMap();
+					System.out.println("You can't move down anymore (bottomRightCorner)");			
 				}
 				else if (atBottomLeftCorner){
+					map.PrintMap();
 					System.out.println("You can't move down anymore (bottomLeftCorner)");		
 				}
 				else if (atTopEdge){
 					player.MoveDown(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if(atBottomEdge){
+					map.PrintMap();
 					System.out.println("You can't move down anymore (BottomEdge)");
 				}
 				else if (atleftEdge){
 					player.MoveDown(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atRightEdge){
 					player.MoveDown(map);	
+					map.PrintMap();
+					enterDoor();
 				}
 				else{
 					player.MoveDown(map);
+					map.PrintMap();
+					enterDoor();
 				}
-				map.PrintMap();
-
 			}
 			else if(playerMove.equals("a")){
-				/*player.MoveLeft(map);
-				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());*/
 				if(atTopLeftCorner){
+					map.PrintMap();
 					System.out.println("You can't move left anymore");
 				}
 				else if(atTopRightCorner){
-					player.MoveLeft(map);	
+					player.MoveLeft(map);
+					map.PrintMap();
+					enterDoor();
 
 				}
 				else if (atBottomRightCorner){
-					player.MoveLeft(map);		
+					player.MoveLeft(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atBottomLeftCorner){
+					map.PrintMap();
 					System.out.println("You can't move left anymore");
 				}
 				else if (atTopEdge){
+					map.PrintMap();
 					System.out.println("You can't move left anymore");
 				}
 				else if(atBottomEdge){
 					player.MoveLeft(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atleftEdge){
+					map.PrintMap();
 					System.out.println("You can't move left anymore");
 				}
 				else if (atRightEdge){
 					player.MoveLeft(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else{
 					player.MoveLeft(map);
+					map.PrintMap();
+					enterDoor();
 				}
-				map.PrintMap();
 
 			}
 			else if(playerMove.equals("d")){
-				/*player.MoveRight(map);
-				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());*/
-
+		
 				if(atTopLeftCorner){
 					player.MoveRight(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if(atTopRightCorner){
+					map.PrintMap();
 					System.out.println("You can't move right anymore");
 				}
 				else if (atBottomRightCorner){
+					map.PrintMap();
 					System.out.println("You can't move right anymore");
 				}
 				else if (atBottomLeftCorner){
 					player.MoveRight(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atTopEdge){
 					player.MoveRight(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if(atBottomEdge){
 					player.MoveRight(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atleftEdge){
 					player.MoveRight(map);
+					map.PrintMap();
+					enterDoor();
 				}
 				else if (atRightEdge){
+					map.PrintMap();
 					System.out.println("You can't move right anymore");
 				}
 				else{
 					player.MoveRight(map);
+					map.PrintMap();
+					enterDoor();
 				}
-				map.PrintMap();
-
 			}
 			else{
 				System.out.println("Invalid Entry");
@@ -238,26 +284,37 @@ public class GamePlay {
 		int value = rand.nextInt(10);
 		switch (value) {
 		case 0:
+			System.out.println("You encounted a Bandit!");
 			return new Enemy("Bandit", 10, 3);
 		case 1:
+			System.out.println("You encounted a Gremlin!");
 			return new Enemy("Gremlin", 15, 4);
 		case 2:
+			System.out.println("You encounted a Smogger!");
 			return new Enemy("Smogger", 20, 4);
 		case 3:
+			System.out.println("You encounted a Wolf!");
 			return new Enemy("Wolf", 25, 5);
 		case 4:
+			System.out.println("You encounted a Golem!");
 			return new Enemy("Golem", 30, 6);
 		case 5:
+			System.out.println("You encounted a Aerostiker!");
 			return new Enemy("Aerostriker", 5, 40);
 		case 6:
+			System.out.println("You encounted a Zombie!");
 			return new Enemy("Zombie", 50, 5);
 		case 7:
+			System.out.println("You encounted a Gargoyle!");
 			return new Enemy("Gargoyle", 40, 10);
 		case 8:
+			System.out.println("You encounted a Behemoth!");
 			return new Enemy("Behemoth", 50, 10);
 		case 9:
+			System.out.println("You encounted a Diablo!");
 			return new Enemy("Diablo", 100, 20);
 		default:
+			System.out.println("You encounted a Cactuar!");
 			return new Enemy("Cactuar", 100, 1);
 		}
 	}
