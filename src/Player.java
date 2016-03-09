@@ -111,17 +111,17 @@ public class Player extends Character{
 	}
 	
 /*----------------------------------------------------------------*/
-	public void roll (DiceCup diceCup) {
+	/*public void roll (DiceCup diceCup) {
 		for (int i = 0; i < diceCup.diceArray.length; i++){
 			diceCup.diceArray[i].Roll();
-
+		
 		public void getDice () {
 		DiceCup diceCup = new DiceCup();
 		for (int i = 0; i < playerDice.length; i++){
 			playerDice[i] = diceCup.diceArray[i];
 		}
 	}
-	
+	*/
 	public void whatDidIRoll () {
 		System.out.println("Your FOUR sided die: " + playerDice[0]);
 		System.out.println("Your SIX sided die: " + playerDice[1]);
@@ -132,45 +132,6 @@ public class Player extends Character{
 			
 	}
 
-	
-/*
-	public void TopEdgeMoves(Player player, Map map){
-		player.MoveLeft(map);
-		player.MoveDown(map);
-		player.MoveRight(map);
-	}
-	public void BottomEdgeMoves(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveLeft(map);
-		player.MoveRight(map);
-	}
-	public void LeftEdgeMoves(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveDown(map);
-		player.MoveRight(map);
-	}
-	public void RightEdgeMoves(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveDown(map);
-		player.MoveLeft(map);
-	}
-	public void TopLeftCorner(Player player, Map map){
-		player.MoveRight(map);
-		player.MoveDown(map);
-	}
-	public void TopRightCorner(Player player, Map map){
-		player.MoveLeft(map);
-		player.MoveDown(map);
-	}
-	public void BottomLeftCorner(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveRight(map);
-	}
-	public void BottomRightCorner(Player player, Map map){
-		player.MoveUp(map);
-		player.MoveLeft(map);
-	}*/
-	
 	
 }
 
