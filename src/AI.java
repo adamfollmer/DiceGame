@@ -5,5 +5,8 @@ public class AI extends Player{
 		super(name, health);
 		
 	}
-
+	
+	public void diceLogic (DiceCup diceCup){
+		
+	}
 }

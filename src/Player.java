@@ -113,6 +113,15 @@ public class Player extends Character{
 		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
 	
+<<<<<<< HEAD
+=======
+	public void roll (DiceCup diceCup) {
+		for (int i = 0; i < diceCup.diceArray.length; i++){
+			diceCup.diceArray[i].Roll();
+		}
+			
+	}
+>>>>>>> 5ae01216b0ddb9b4391a0023052822aceb370622
 
 	public void TopEdgeMoves(Player player, Map map){
 		player.MoveLeft(map);
