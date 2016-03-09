@@ -89,17 +89,38 @@ public class Player extends Character {
 		yCoordinate = ((Map) map).getYCoordinate();
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "O";
-
+		map.map[xCoordiante - playerDice[1].roll][yCoordinate]= "O";
+		
+/*		
+		if(playerOneTurn){
+			map.map[xCoordiante][yCoordinate ]= "X";
+			map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "1";
+		}
+		else if(playerTwoTurn){
+			map.map[xCoordiante][yCoordinate ]= "X";
+			map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "2";
+		}
+*/
 
 	}
 
 	public void MoveDown(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
+		
+		
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante+playerDice[1].roll][yCoordinate ]= "O";
-
+		map.map[xCoordiante+playerDice[1].roll][yCoordinate]= "O";
+		/*
+		if(playerOneTurn){
+			map.map[xCoordiante][yCoordinate ]= "X";
+			map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "1";
+		}
+		else if(playerTwoTurn){
+			map.map[xCoordiante][yCoordinate ]= "X";
+			map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "2";
+		}
+*/
 	}
 
 	public void MoveLeft(Map map) {

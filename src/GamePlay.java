@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class GamePlay {
 
-	public void printInstructions(Player player1, Player player2) {
+	public void printInstructions(Player player1, Player player2, AI computer) {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Welcome to Dragon Slayer");
@@ -36,14 +36,18 @@ public class GamePlay {
 			} else if (answer.equals("p")) {
 				int option = humanOrAI();
 
-<<<<<<< HEAD
 				if(option == 1){
 					player1.name = playerName();
 					player2.name = playerName();
-=======
-				if (option == 1) {
-					playerName();
->>>>>>> a2a1c737e400f1f08e93181f686a742c4cce7594
+					player2.playerTwoTurn = true;
+					computer.computerTurn = false;
+
+				}
+				else if (option == 2){
+					player1.name = playerName();
+					computer.name = "Computer";
+					player2.playerTwoTurn = false;
+					computer.computerTurn = true;
 				}
 
 				gameStartMenu = false;
@@ -104,7 +108,10 @@ public class GamePlay {
 		boolean atBottomRightCorner = false;
 
 		Scanner scan = new Scanner(System.in);
+		int moveCounter = player.playerDice[1].roll;
+		
 		while (isTurn) {
+			
 			System.out.println("Up [w] Down [s] Left [a] Right [d]");
 			String playerMove = scan.next();
 
@@ -122,39 +129,48 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
+					moveCounter --;
 
 				} else if (atTopRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
+					moveCounter --;
 				} else if (atBottomRightCorner) {
 					player.MoveUp(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					player.MoveUp(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atTopEdge) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
+					moveCounter--;
 				} else if (atBottomEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atleftEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atRightEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				}
 
 				else {
 					player.MoveUp(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				}
 
 			} else if (playerMove.equals("s")) {
@@ -163,70 +179,88 @@ public class GamePlay {
 					player.MoveDown(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atTopRightCorner) {
 					player.MoveDown(map);
 					map.PrintMap();
+					moveCounter--;
 					enterDoor(player);
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
+					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
+					moveCounter--;
 				} else if (atTopEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atBottomEdge) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
+					moveCounter--;
 				} else if (atleftEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atRightEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else {
 					player.MoveDown(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				}
 			} else if (playerMove.equals("a")) {
 				if (atTopLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
+					moveCounter--;
 				} else if (atTopRightCorner) {
 					player.MoveLeft(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 
 				} else if (atBottomRightCorner) {
 					player.MoveLeft(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
+					moveCounter--;
 				} else if (atTopEdge) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
+					moveCounter--;
 				} else if (atBottomEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atleftEdge) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
+					moveCounter--;
 				} else if (atRightEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else {
 					player.MoveLeft(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				}
 
 			} else if (playerMove.equals("d")) {
@@ -235,41 +269,55 @@ public class GamePlay {
 					player.MoveRight(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atTopRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move right anymore");
+					moveCounter--;
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move right anymore");
+					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					player.MoveRight(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atTopEdge) {
 					player.MoveRight(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atBottomEdge) {
 					player.MoveRight(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atleftEdge) {
 					player.MoveRight(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				} else if (atRightEdge) {
 					map.PrintMap();
 					System.out.println("You can't move right anymore");
+					moveCounter--;
 				} else {
 					player.MoveRight(map);
 					map.PrintMap();
 					enterDoor(player);
+					moveCounter--;
 				}
-			} else {
+			} 
+			else if(moveCounter == 0){
+				isTurn = false;
+				break;
+			}
+			else {
 				map.PrintMap();
 				System.out.println("Invalid Entry");
 			}
-			isTurn = false;
+			System.out.println("Moves left : " + moveCounter);
 		}
 
 	}
@@ -331,22 +379,47 @@ public class GamePlay {
 	 * }
 	 */
 
-<<<<<<< HEAD
-	}
 
-	/*public void CreatePlayer(){
-		Player player1 = new Player("Player1", 100);
-	}*/
-
-	public void PlayerTurn(Player player, Map map){
-=======
 	public void PlayerTurn(Player player, Map map) {
->>>>>>> a2a1c737e400f1f08e93181f686a742c4cce7594
 		player.getDice();
 		System.out.println(player.name + ":");
 		player.whatDidIRoll();
 		System.out.println();
 		map.PrintMap();
 		PlayerControl(player, map);
+	}
+	
+	public void ComputerTurn(AI computer, Map map, GamePlay gamePlay) {
+		computer.getDice();
+		System.out.println(computer.name + ":");
+		computer.whatDidIRoll();
+		System.out.println();
+		computer.ComputerControl(computer, map, gamePlay);
+	}
+	
+	public void GameTurn(Player player1, Player player2, AI computerPlayer, Map map, GamePlay gamePlay){
+	boolean stillPlay = true;
+		
+		while(player1.playerOneTurn || player2.playerTwoTurn || stillPlay ||computerPlayer.computerTurn){
+			if(player1.playerOneTurn){
+				System.out.println();
+				PlayerTurn(player1, map);
+				player1.playerOneTurn = false;
+			}
+			else if (player2.playerTwoTurn){
+				System.out.println();
+				PlayerTurn(player2, map);
+				player1.playerOneTurn = true;
+				player2.playerTwoTurn = false;
+				computerPlayer.computerTurn = false;
+			}
+			else if (computerPlayer.computerTurn){
+				System.out.println();
+				ComputerTurn(computerPlayer, map, gamePlay);
+				player1.playerOneTurn = true;
+				player2.playerTwoTurn = false;
+				computerPlayer.computerTurn = false;
+			}
+		}
 	}
 }
