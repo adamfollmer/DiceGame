@@ -111,9 +111,10 @@ public class Player extends Character{
 	}
 	
 /*----------------------------------------------------------------*/
-	public void roll (DiceCup diceCup) {
+	/*public void roll (DiceCup diceCup) {
 		for (int i = 0; i < diceCup.diceArray.length; i++){
-			diceCup.diceArray[i].Roll();
+			diceCup.diceArray[i].Roll();*/
+	//I don't think we need the above function anymore, will use getDice for rolling.
 
 		public void getDice () {
 		DiceCup diceCup = new DiceCup();
