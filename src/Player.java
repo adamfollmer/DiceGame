@@ -112,6 +112,7 @@ public class Player extends Character{
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
+	
 	public void getDice () {
 		DiceCup diceCup = new DiceCup();
 		for (int i = 0; i < playerDice.length; i++){
@@ -120,9 +121,12 @@ public class Player extends Character{
 	}
 	
 	public void whatDidIRoll () {
-		for (int i = 0; i < playerDice.length; i++){
-			playerDice[i].Roll();
-		}
+		System.out.println("Your FOUR sided die: " + playerDice[0]);
+		System.out.println("Your SIX sided die: " + playerDice[1]);
+		System.out.println("Your EIGHT sided die: " + playerDice[2]);
+		System.out.println("Your TEN sided die: " + playerDice[3]);
+		System.out.println("Your TWELVE sided die: " + playerDice[4]);
+		System.out.println("Your TWENTY sided die: " + playerDice[5]);
 			
 	}
 

@@ -1,12 +1,11 @@
-import java.lang.Math;
+import java.util.Random;
 
 public class Dice {
-	double numSides;
-	double rand = Math.random();
+	Random rand = new Random();
+	int numSides;
+	int roll;
 	
-	//I need this blank function to serve as an override statement when
-	//calling the diceCup array;
-	public void Roll(){ 
+	public Dice () {
 		
 	}
 }
