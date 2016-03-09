@@ -89,4 +89,7 @@ public class Treasure {
 		}
 	}
 
+	public void PrintTreasure(){
+		System.out.println(chest.name);
+	}
 }

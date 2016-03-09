@@ -334,7 +334,6 @@ public class GamePlay {
 		case 1:
 			System.out.println("You found a treasure chest!");
 			CheckTreasure(randomTreasure());
-			//System.out.println(randomTreasure());
 			break;
 		default:
 			System.out.println("You entered an empty room.");
