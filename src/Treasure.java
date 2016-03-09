@@ -85,7 +85,7 @@ public class Treasure {
 		case 1:
 			return new Item("Hi-Potion", 100, "ITEM");
 		default:
-			return new Item("Myster Potion", -25, "ITEM");
+			return new Item("Weak potion", 10, "ITEM");
 		}
 	}
 
