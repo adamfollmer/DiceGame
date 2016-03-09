@@ -111,7 +111,11 @@ public class GamePlay {
 		Scanner scan = new Scanner(System.in);
 		int moveCounter = player.playerDice[1].roll;
 		
+		System.out.println("Moves left "+moveCounter);
 		while (isTurn) {
+			if(moveCounter <= 0){
+				isTurn = false;
+			}
 			
 			System.out.println("Up [w] Down [s] Left [a] Right [d]");
 			String playerMove = scan.next();
@@ -310,10 +314,6 @@ public class GamePlay {
 					moveCounter--;
 				}
 			} 
-			else if(moveCounter == 0){
-				isTurn = false;
-				break;
-			}
 			else {
 				map.PrintMap();
 				System.out.println("Invalid Entry");

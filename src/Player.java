@@ -91,7 +91,7 @@ public class Player extends Character {
 
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante - playerDice[1].roll][yCoordinate]= "O";
+		map.map[xCoordiante - 1][yCoordinate]= "O";
 		
 /*		
 		if(playerOneTurn){
@@ -104,8 +104,6 @@ public class Player extends Character {
 		}
 */
 
-		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante - playerDice[1].roll][yCoordinate] = "O";
 
 
 	}
@@ -116,7 +114,7 @@ public class Player extends Character {
 		
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante+playerDice[1].roll][yCoordinate]= "O";
+		map.map[xCoordiante+1][yCoordinate]= "O";
 		/*
 		if(playerOneTurn){
 			map.map[xCoordiante][yCoordinate ]= "X";
@@ -128,16 +126,13 @@ public class Player extends Character {
 		}
 */
 
-		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante + playerDice[1].roll][yCoordinate] = "O";
-
 	}
 
 	public void MoveLeft(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
 		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante][yCoordinate - playerDice[1].roll] = "O";
+		map.map[xCoordiante][yCoordinate - 1] = "O";
 
 	}
 
@@ -145,7 +140,7 @@ public class Player extends Character {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
 		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante][yCoordinate + playerDice[1].roll] = "O";
+		map.map[xCoordiante][yCoordinate + 1] = "O";
 	}
 
 	public void getDice() {
@@ -195,6 +190,7 @@ public class Player extends Character {
 				EquipNew(chest);
 			} else {
 				System.out.println("You're keeping your old item.");
+				
 			}
 
 		}
