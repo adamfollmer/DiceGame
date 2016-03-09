@@ -74,7 +74,7 @@ public class Player extends Character{
 			return false;
 		}
 	}
-
+/*-----------------------------------------------------------------------*/
 	public void MoveUp(Map map){
 		xCoordiante = ((Map) map).getXCoordinate();
 		yCoordinate = ((Map) map).getYCoordinate();
@@ -88,8 +88,6 @@ public class Player extends Character{
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
 
-
-		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante+1][yCoordinate ]= "O";
 	}
@@ -108,21 +106,20 @@ public class Player extends Character{
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
 
-		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
 	
-<<<<<<< HEAD
-=======
+/*----------------------------------------------------------------*/
 	public void roll (DiceCup diceCup) {
 		for (int i = 0; i < diceCup.diceArray.length; i++){
 			diceCup.diceArray[i].Roll();
 		}
 			
 	}
->>>>>>> 5ae01216b0ddb9b4391a0023052822aceb370622
 
+	
+/*
 	public void TopEdgeMoves(Player player, Map map){
 		player.MoveLeft(map);
 		player.MoveDown(map);
@@ -132,26 +129,33 @@ public class Player extends Character{
 		player.MoveUp(map);
 		player.MoveLeft(map);
 		player.MoveRight(map);
-		
 	}
 	public void LeftEdgeMoves(Player player, Map map){
-		
+		player.MoveUp(map);
+		player.MoveDown(map);
+		player.MoveRight(map);
 	}
-	public void RightEdgeMoves(){
-		
+	public void RightEdgeMoves(Player player, Map map){
+		player.MoveUp(map);
+		player.MoveDown(map);
+		player.MoveLeft(map);
 	}
-	public void TopLeftCorner(){
-		
+	public void TopLeftCorner(Player player, Map map){
+		player.MoveRight(map);
+		player.MoveDown(map);
 	}
-	public void TopRightCorner(){
-		
+	public void TopRightCorner(Player player, Map map){
+		player.MoveLeft(map);
+		player.MoveDown(map);
 	}
-	public void BottomLeftCorner(){
-		
+	public void BottomLeftCorner(Player player, Map map){
+		player.MoveUp(map);
+		player.MoveRight(map);
 	}
-	public void BottomRightCorner(){
-		
-	}
+	public void BottomRightCorner(Player player, Map map){
+		player.MoveUp(map);
+		player.MoveLeft(map);
+	}*/
 	
 	
 }

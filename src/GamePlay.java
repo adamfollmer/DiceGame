@@ -19,7 +19,7 @@ public class GamePlay {
 		System.out.println(
 				"For physical attacks - your current weapon, the amount you roll, and the attack multiplier equal your total damage");
 		System.out
-				.println("Once your Limit Break hits 100, you can perform a special attack that does a lot of damage");
+		.println("Once your Limit Break hits 100, you can perform a special attack that does a lot of damage");
 		System.out.println();
 	}
 	//The below function is meant to be used for both players if a two player game
@@ -48,40 +48,178 @@ public class GamePlay {
 
 	public void PlayerControl(Player player, Map map){
 		boolean control = true;
+
+		boolean atTopEdge = false;
+		boolean atBottomEdge = false;
+		boolean atleftEdge =false;
+		boolean atRightEdge = false;
+
+		boolean atTopLeftCorner = false;
+		boolean atTopRightCorner = false;
+		boolean atBottomLeftCorner = false;
+		boolean atBottomRightCorner = false;
+
 		Scanner scan = new Scanner(System.in);
 		while(control){
 			System.out.println("Up [w] Down [s] Left [a] Right [d]");
 			String playerMove = scan.next();
-			
+
+			atTopEdge = map.CheckIfTopEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+			atBottomEdge = map.CheckIfBottomEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+			atleftEdge = map.CheckIfLeftEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+			atRightEdge = map.CheckIfRightEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+
+			atTopLeftCorner = map.CheckIfTopLeftCornerOfMap(map.getXCoordinate(), map.getYCoordinate());
+			atTopRightCorner = map.CheckIfTopRightCornerOfMap(map.getXCoordinate(), map.getYCoordinate());
+			atBottomLeftCorner = map.CheckIfBottomLeftCornerOfMap(map.getXCoordinate(), map.getYCoordinate());
+			atBottomRightCorner = map.CheckIfBottomRightCornerOfMap(map.getXCoordinate(), map.getYCoordinate());
+
+
 			if(playerMove.equals("w")){
-				player.MoveUp(map);
+				if(atTopLeftCorner){
+					System.out.println("You can't move up anymore");
+				}
+				else if(atTopRightCorner){
+					System.out.println("You can't move up anymore");
+				}
+				else if (atBottomRightCorner){
+					player.MoveUp(map);
+				}
+				else if (atBottomLeftCorner){
+					player.MoveUp(map);
+				}
+				else if (atTopEdge){
+					System.out.println("You can't move up anymore");
+				}
+				else if(atBottomEdge){
+					player.MoveUp(map);
+				}
+				else if (atleftEdge){
+					player.MoveUp(map);
+				}
+				else if (atRightEdge){
+					player.MoveUp(map);	
+				}
+				
+				else{
+					player.MoveUp(map);
+				}
 				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+
 			}
 			else if(playerMove.equals("s")){
-				player.MoveDown(map);
+				/*player.MoveDown(map);
 				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());*/
+				if(atTopLeftCorner){
+					player.MoveDown(map);	
+					}
+				else if(atTopRightCorner){
+					player.MoveDown(map);	
+				}
+				else if (atBottomRightCorner){
+					System.out.println("You can't move down anymore (bottomRightCorner)");		
+					}
+				else if (atBottomLeftCorner){
+					System.out.println("You can't move down anymore (bottomLeftCorner)");		
+				}
+				else if (atTopEdge){
+					player.MoveDown(map);
+				}
+				else if(atBottomEdge){
+					System.out.println("You can't move down anymore (BottomEdge)");
+				}
+				else if (atleftEdge){
+					player.MoveDown(map);
+				}
+				else if (atRightEdge){
+					player.MoveDown(map);	
+				}
+				else{
+					player.MoveDown(map);
+					}
+				map.PrintMap();
+				
 			}
 			else if(playerMove.equals("a")){
-				player.MoveLeft(map);
+				/*player.MoveLeft(map);
 				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());*/
+				if(atTopLeftCorner){
+					System.out.println("You can't move left anymore");
+					}
+				else if(atTopRightCorner){
+					player.MoveLeft(map);	
+
+				}
+				else if (atBottomRightCorner){
+					player.MoveLeft(map);		
+					}
+				else if (atBottomLeftCorner){
+					System.out.println("You can't move left anymore");
+				}
+				else if (atTopEdge){
+					System.out.println("You can't move left anymore");
+					}
+				else if(atBottomEdge){
+					player.MoveLeft(map);
+				}
+				else if (atleftEdge){
+					System.out.println("You can't move left anymore");
+					}
+				else if (atRightEdge){
+					player.MoveLeft(map);
+				}
+				else{
+					player.MoveLeft(map);
+					}
+				map.PrintMap();
+					
 			}
 			else if(playerMove.equals("d")){
-				player.MoveRight(map);
+				/*player.MoveRight(map);
 				map.PrintMap();
-				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
+				map.CheckIfEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());*/
+				
+				if(atTopLeftCorner){
+					player.MoveRight(map);
+					}
+				else if(atTopRightCorner){
+					System.out.println("You can't move right anymore");
+				}
+				else if (atBottomRightCorner){
+					System.out.println("You can't move right anymore");
+					}
+				else if (atBottomLeftCorner){
+					player.MoveRight(map);
+				}
+				else if (atTopEdge){
+					player.MoveRight(map);
+					}
+				else if(atBottomEdge){
+					player.MoveRight(map);
+				}
+				else if (atleftEdge){
+					player.MoveRight(map);
+					}
+				else if (atRightEdge){
+					System.out.println("You can't move right anymore");
+					}
+				else{
+					player.MoveRight(map);
+					}
+				map.PrintMap();
+				
 			}
 			else{
 				System.out.println("Invalid Entry");
 			}
-			
+
 		}
 	}
 }	
 
-	
+
 
 
 
