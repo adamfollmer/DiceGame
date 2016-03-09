@@ -122,7 +122,7 @@ public class GamePlay {
 				isTurn = false;
 			}
 
-			System.out.println("Up [w] Down [s] Left [a] Right [d]");
+			System.out.println("Up [w] Down [s] Left [a] Right [d] Character [c] Use Items [i]");
 			String playerMove = scan.next();
 
 			atTopEdge = map.CheckIfTopEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
@@ -305,7 +305,14 @@ public class GamePlay {
 					enterDoor(player, map);
 					moveCounter--;
 				}
-			} else {
+			} 
+			else if(playerMove.equals("c")){
+				player.status();
+			}
+			else if(playerMove.equals("i")){
+				player.UseItem();
+			}
+			else {
 				map.PrintMap();
 				System.out.println("Invalid Entry");
 			}

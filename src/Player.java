@@ -34,6 +34,7 @@ public class Player extends Character {
 		System.out.println("Your weapon: " + weapon.name + ". It has a bonus attack of " + weapon.generalStatBoost
 				+ "\n Your armor: " + armor.name + ". It has bonus defense of " + armor.generalStatBoost);
 		System.out.println("Your limit break meter is at " + limitBreakStatus);
+		BackPackContents();
 	}
 
 	public void selectAttack(Enemy enemy) {
@@ -215,7 +216,7 @@ public class Player extends Character {
 	public void BackPackContents() {
 		System.out.print(name + " backpack's contains: ");
 		for (Item item : backpack) {
-			System.out.println(item);
+			System.out.println(item.name);
 		}
 	}
 
