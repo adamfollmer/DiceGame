@@ -46,7 +46,7 @@ public class AI extends Player {
 	}
 
 	public void UseItem() {
-		if (health <= 50 && backpack.isEmpty() == false) {
+		if (backpack.isEmpty() == false) {
 			for (Item item : backpack) {
 				if (item.name.toUpperCase().equals("POTION")) {
 					if (item.generalStatBoost + health >= 100) {

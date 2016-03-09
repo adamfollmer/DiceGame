@@ -336,4 +336,12 @@ public class GamePlay {
 		map.PrintMap();
 		PlayerControl(player, map);
 	}
+	
+	public void AITurn (AI ai) {
+		ai.getDice();
+		ai.whatDidIRoll();
+		//moveCall
+		enterDoor(ai);
+		ai.UseItem();
+	}
 }
