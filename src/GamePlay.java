@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class GamePlay {
 
-	public void printInstructions() {
+	public void printInstructions(Player player1, Player player2) {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Welcome to Dragon Slayer");
@@ -36,8 +36,9 @@ public class GamePlay {
 			} else if (answer.equals("p")) {
 				int option = humanOrAI();
 
-				if (option == 1) {
-					playerName();
+				if(option == 1){
+					player1.name = playerName();
+					player2.name = playerName();
 				}
 
 				gameStartMenu = false;
@@ -85,7 +86,7 @@ public class GamePlay {
 	}
 
 	public void PlayerControl(Player player, Map map) {
-		boolean control = true;
+		boolean isTurn = true;
 
 		boolean atTopEdge = false;
 		boolean atBottomEdge = false;
@@ -98,7 +99,7 @@ public class GamePlay {
 		boolean atBottomRightCorner = false;
 
 		Scanner scan = new Scanner(System.in);
-		while (control) {
+		while (isTurn) {
 			System.out.println("Up [w] Down [s] Left [a] Right [d]");
 			String playerMove = scan.next();
 
@@ -263,8 +264,9 @@ public class GamePlay {
 				map.PrintMap();
 				System.out.println("Invalid Entry");
 			}
-
+			isTurn = false;
 		}
+
 	}
 
 	public Enemy randomEnemy() {
@@ -324,9 +326,13 @@ public class GamePlay {
 	 * }
 	 */
 
+
 	public void PlayerTurn(Player player, Map map) {
+
 		player.getDice();
+		System.out.println(player.name + ":");
 		player.whatDidIRoll();
+		System.out.println();
 		map.PrintMap();
 		PlayerControl(player, map);
 	}

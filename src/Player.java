@@ -15,8 +15,14 @@ public class Player extends Character {
 	int xCoordiante = 0;
 	int yCoordinate = 0;
 	Dice[] playerDice = new Dice[6];
-	boolean isTurn = true;
 
+	boolean playerOneTurn = true;
+	boolean playerTwoTurn = true;
+	
+	String player1 ="1";
+	String player2 = "2";
+	
+	
 	public Player(String name, int health) {
 		super(name, health);
 		backpack.add(new Item("Potion", 50, "ITEM"));
