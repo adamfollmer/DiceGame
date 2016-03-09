@@ -70,7 +70,7 @@ public class GamePlay {
 	public int humanOrAI() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Do you want to play against another person or the computer?");
-		System.out.println("Enter 1 for person or 2 for AI");
+		System.out.println("Enter [1] for person or [2] for AI");
 		int userInput = scanner.nextInt();
 		return userInput;
 	}
@@ -113,7 +113,7 @@ public class GamePlay {
 		
 		System.out.println("Moves left "+moveCounter);
 		while (isTurn) {
-			if(moveCounter <= 0){
+			if(moveCounter <= 1){
 				isTurn = false;
 			}
 			
@@ -134,12 +134,10 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
-					moveCounter --;
 
 				} else if (atTopRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
-					moveCounter --;
 				} else if (atBottomRightCorner) {
 					player.MoveUp(map);
 					map.PrintMap();
@@ -153,7 +151,6 @@ public class GamePlay {
 				} else if (atTopEdge) {
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
-					moveCounter--;
 				} else if (atBottomEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
@@ -193,11 +190,9 @@ public class GamePlay {
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
-					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
-					moveCounter--;
 				} else if (atTopEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
@@ -206,7 +201,6 @@ public class GamePlay {
 				} else if (atBottomEdge) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
-					moveCounter--;
 				} else if (atleftEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
@@ -227,7 +221,6 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
-					moveCounter--;
 				} else if (atTopRightCorner) {
 					player.MoveLeft(map);
 					map.PrintMap();
@@ -242,11 +235,9 @@ public class GamePlay {
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
-					moveCounter--;
 				} else if (atTopEdge) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
-					moveCounter--;
 				} else if (atBottomEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
@@ -255,7 +246,6 @@ public class GamePlay {
 				} else if (atleftEdge) {
 					map.PrintMap();
 					System.out.println("You can't move left anymore");
-					moveCounter--;
 				} else if (atRightEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
@@ -278,11 +268,9 @@ public class GamePlay {
 				} else if (atTopRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move right anymore");
-					moveCounter--;
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move right anymore");
-					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					player.MoveRight(map);
 					map.PrintMap();
@@ -306,7 +294,6 @@ public class GamePlay {
 				} else if (atRightEdge) {
 					map.PrintMap();
 					System.out.println("You can't move right anymore");
-					moveCounter--;
 				} else {
 					player.MoveRight(map);
 					map.PrintMap();
