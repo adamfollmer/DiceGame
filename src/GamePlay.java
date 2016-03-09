@@ -48,6 +48,7 @@ public class GamePlay {
 					computer.name = "Computer";
 					player2.playerTwoTurn = false;
 					computer.computerTurn = true;
+
 				}
 
 				gameStartMenu = false;
@@ -381,6 +382,7 @@ public class GamePlay {
 
 
 	public void PlayerTurn(Player player, Map map) {
+
 		player.getDice();
 		System.out.println(player.name + ":");
 		player.whatDidIRoll();

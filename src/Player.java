@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player extends Character {
-	ArrayList<String> backpack = new ArrayList<String>();
+	ArrayList<Item> backpack = new ArrayList<Item>();
 	Weapon weapon = new Weapon("Starter Sword", 1, "WEAPON");
 	Armor armor = new Armor("Starter Armor", 1, "ARMOR");
 	Spell arcaneBlast = new Spell("Arcane Blast", 1);
@@ -25,6 +25,7 @@ public class Player extends Character {
 	
 	public Player(String name, int health) {
 		super(name, health);
+		backpack.add(new Item("Potion", 50, "ITEM"));
 	}
 
 	public void status() {
@@ -87,6 +88,7 @@ public class Player extends Character {
 	public void MoveUp(Map map) {
 		xCoordiante = ((Map) map).getXCoordinate();
 		yCoordinate = ((Map) map).getYCoordinate();
+
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante - playerDice[1].roll][yCoordinate]= "O";
@@ -101,6 +103,10 @@ public class Player extends Character {
 			map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "2";
 		}
 */
+
+		map.map[xCoordiante][yCoordinate] = "X";
+		map.map[xCoordiante - playerDice[1].roll][yCoordinate] = "O";
+
 
 	}
 
@@ -121,21 +127,25 @@ public class Player extends Character {
 			map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "2";
 		}
 */
+
+		map.map[xCoordiante][yCoordinate] = "X";
+		map.map[xCoordiante + playerDice[1].roll][yCoordinate] = "O";
+
 	}
 
 	public void MoveLeft(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
-		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante][yCoordinate-playerDice[1].roll]= "O";
-	
+		map.map[xCoordiante][yCoordinate] = "X";
+		map.map[xCoordiante][yCoordinate - playerDice[1].roll] = "O";
+
 	}
 
 	public void MoveRight(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
-		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante][yCoordinate+playerDice[1].roll]= "O";
+		map.map[xCoordiante][yCoordinate] = "X";
+		map.map[xCoordiante][yCoordinate + playerDice[1].roll] = "O";
 	}
 
 	public void getDice() {
@@ -145,8 +155,8 @@ public class Player extends Character {
 		}
 		limitBreakStatus += playerDice[5].roll;
 	}
-	
-	public void whatDidIRoll () {
+
+	public void whatDidIRoll() {
 		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0].roll);
 		System.out.println("Your MOVEMENT die: " + playerDice[1].roll);
 		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2].roll);
@@ -167,7 +177,6 @@ public class Player extends Character {
 		System.out.println("Enemy health remaining: " + enemy.health);
 	}
 
-
 	public void BottomRightCorner(Player player, Map map) {
 		player.MoveUp(map);
 		player.MoveLeft(map);
@@ -176,27 +185,61 @@ public class Player extends Character {
 	public void CheckTreasure(Chest chest) {
 		Scanner scanner = new Scanner(System.in);
 		if (chest.itemType.equals("ITEM")) {
-			System.out.println("You found a " + chest.name + " that returns " + chest.generalStatBoost
+			System.out.println(name + " found a " + chest.name + " that returns " + chest.generalStatBoost
 					+ " health when used in battle.");
-			// addItem to backpack
+			backpack.add((Item) chest);
 		} else {
-			System.out.println("You found a " + chest.name + " that has a bonus of " + chest.generalStatBoost + ".");
-			System.out.println("Do you want to keep it?");
+			System.out.println(name + " found a " + chest.name + " that has a bonus of " + chest.generalStatBoost + ".");
+			System.out.println("Do you want to keep it? YES or NO");
 			if (scanner.nextLine().toUpperCase().equals("YES")) {
-				// EquipGear Function
+				EquipNew(chest);
 			} else {
-				System.out.println("You're keeping your current item.");
+				System.out.println("You're keeping your old item.");
 			}
 
 		}
 		System.out.println();
 	}
-	
-	public void EquipNew (Chest chest){
+
+	public void EquipNew(Chest chest) {
 		if (chest.itemType.equals("WEAPON")) {
 			weapon = (Weapon) chest;
+			System.out.println(name +" equipped the " + weapon.name + ".");
 		} else {
 			armor = (Armor) chest;
+			System.out.println(name + " equipped the " + armor.name + ".");
+		}
+	}
+	
+	public void BackPackContents() {
+		System.out.print(name + " backpack's contains: ");
+		for (Item item : backpack) {
+			System.out.println(item);
+		}
+	}
+
+	public void UseItem() {
+		BackPackContents();
+		if (backpack.isEmpty() == true) {
+			System.out.println("There is nothing in your backpack to use");
+		} else {
+			System.out.println("What do you want to use?");
+			Scanner scanner = new Scanner(System.in);
+			String userInput = scanner.nextLine().toUpperCase();
+			for (Item item : backpack) {
+				if (item.name.toUpperCase().equals(userInput)) {
+					if (item.generalStatBoost + health >= 100) {
+						health = 100;
+						System.out.println(name + " used a " + item.name);
+						System.out.println(name + " healed back to full health");
+					} else {
+						health = item.generalStatBoost + health;
+						System.out.println(name + " healed to " + health);
+					}
+					backpack.remove(item);
+					break;
+				}
+			}
 		}
 	}
 }
