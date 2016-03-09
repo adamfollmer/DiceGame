@@ -122,16 +122,30 @@ public class Player extends Character{
 		for (int i = 0; i < playerDice.length; i++){
 			playerDice[i] = diceCup.diceArray[i];
 		}
+		limitBreakStatus += playerDice[5].roll;
 	}
 	
 	public void whatDidIRoll () {
-		System.out.println("Your FOUR sided die: " + playerDice[0]);
-		System.out.println("Your SIX sided die: " + playerDice[1]);
-		System.out.println("Your EIGHT sided die: " + playerDice[2]);
-		System.out.println("Your TEN sided die: " + playerDice[3]);
-		System.out.println("Your TWELVE sided die: " + playerDice[4]);
-		System.out.println("Your TWENTY sided die: " + playerDice[5]);
+		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0]);
+		System.out.println("Your MOVEMENT die: " + playerDice[1]);
+		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2]);
+		System.out.println("Your MAGIC ATTACK die: " + playerDice[3]);
+		System.out.println("Your DEFENSE BONUS die: " + playerDice[4]);
+		System.out.println("Your LIMIT BREAK die: " + playerDice[5]);
 			
+	}
+	public void combatRollAndStats(Enemy enemy) {
+		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0]);
+		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2]);
+		System.out.println("Your MAGIC ATTACK die: " + playerDice[3]);
+		System.out.println("Your DEFENSE BONUS die: " + playerDice[4]);
+		System.out.println("Your LIMIT BREAK die: " + playerDice[5]);
+		System.out.println();
+		System.out.println("Health: " + health + "/100");
+		System.out.println("Limit Break: " + limitBreakStatus + "/100");
+		System.out.println("Enemy health remaining: " + enemy.health);
+		
+		
 	}
 
 	
