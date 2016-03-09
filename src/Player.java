@@ -15,6 +15,7 @@ public class Player extends Character {
 	int xCoordiante = 0;
 	int yCoordinate = 0;
 	Dice[] playerDice = new Dice[6];
+	boolean isTurn = true;
 
 	public Player(String name, int health) {
 		super(name, health);
@@ -80,46 +81,35 @@ public class Player extends Character {
 	public void MoveUp(Map map) {
 		xCoordiante = ((Map) map).getXCoordinate();
 		yCoordinate = ((Map) map).getYCoordinate();
+		
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "O";
 
-		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante - 1][yCoordinate] = "O";
 
 	}
 
 	public void MoveDown(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante+playerDice[1].roll][yCoordinate ]= "O";
 
-		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante + 1][yCoordinate] = "O";
 	}
 
 	public void MoveLeft(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
-
-		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante][yCoordinate - 1] = "O";
-
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante][yCoordinate-playerDice[1].roll]= "O";
+	
 	}
 
 	public void MoveRight(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
-
-		map.map[xCoordiante][yCoordinate] = "X";
-		map.map[xCoordiante][yCoordinate + 1] = "O";
+		map.map[xCoordiante][yCoordinate ]= "X";
+		map.map[xCoordiante][yCoordinate+playerDice[1].roll]= "O";
 	}
-
-	/*----------------------------------------------------------------*/
-	/*
-	 * public void roll (DiceCup diceCup) { for (int i = 0; i <
-	 * diceCup.diceArray.length; i++){ <<<<<<< HEAD diceCup.diceArray[i].Roll();
-	 * 
-	 * ======= diceCup.diceArray[i].Roll();
-	 */
-	// I don't think we need the above function anymore, will use getDice for
-	// rolling.
 
 	public void getDice() {
 		DiceCup diceCup = new DiceCup();
@@ -128,33 +118,28 @@ public class Player extends Character {
 		}
 		limitBreakStatus += playerDice[5].roll;
 	}
-
-	public void whatDidIRoll() {
-		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0]);
-		System.out.println("Your MOVEMENT die: " + playerDice[1]);
-		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2]);
-		System.out.println("Your MAGIC ATTACK die: " + playerDice[3]);
-		System.out.println("Your DEFENSE BONUS die: " + playerDice[4]);
-		System.out.println("Your LIMIT BREAK die: " + playerDice[5]);
-
+	
+	public void whatDidIRoll () {
+		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0].roll);
+		System.out.println("Your MOVEMENT die: " + playerDice[1].roll);
+		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2].roll);
+		System.out.println("Your MAGIC ATTACK die: " + playerDice[3].roll);
+		System.out.println("Your DEFENSE BONUS die: " + playerDice[4].roll);
+		System.out.println("Your LIMIT BREAK die: " + playerDice[5].roll);
 	}
 
 	public void combatRollAndStats(Enemy enemy) {
-		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0]);
-		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2]);
-		System.out.println("Your MAGIC ATTACK die: " + playerDice[3]);
-		System.out.println("Your DEFENSE BONUS die: " + playerDice[4]);
-		System.out.println("Your LIMIT BREAK die: " + playerDice[5]);
+		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0].roll);
+		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2].roll);
+		System.out.println("Your MAGIC ATTACK die: " + playerDice[3].roll);
+		System.out.println("Your DEFENSE BONUS die: " + playerDice[4].roll);
+		System.out.println("Your LIMIT BREAK die: " + playerDice[5].roll);
 		System.out.println();
 		System.out.println("Health: " + health + "/100");
 		System.out.println("Limit Break: " + limitBreakStatus + "/100");
 		System.out.println("Enemy health remaining: " + enemy.health);
-
 	}
 
-	public void OpenTreasure() {
-
-	}
 
 	public void BottomRightCorner(Player player, Map map) {
 		player.MoveUp(map);

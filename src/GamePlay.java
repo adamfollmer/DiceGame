@@ -34,6 +34,12 @@ public class GamePlay {
 						"Once your Limit Break hits 100, you can perform a special attack that does a lot of damage");
 				System.out.println();
 			} else if (answer.equals("p")) {
+				int option = humanOrAI();
+
+				if (option == 1) {
+					playerName();
+				}
+
 				gameStartMenu = false;
 			}
 		}
@@ -51,7 +57,6 @@ public class GamePlay {
 	}
 
 	public int humanOrAI() {
-		System.out.println();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Do you want to play against another person or the computer?");
 		System.out.println("Enter 1 for person or 2 for AI");
@@ -305,6 +310,7 @@ public class GamePlay {
 		case 1:
 			System.out.println("You found a treasure chest!");
 			player.CheckTreasure(randomTreasure());
+
 			break;
 		default:
 			System.out.println("You entered an empty room.");
@@ -313,5 +319,15 @@ public class GamePlay {
 		}
 	}
 
+	/*
+	 * public void CreatePlayer(){ Player player1 = new Player("Player1", 100);
+	 * }
+	 */
 
+	public void PlayerTurn(Player player, Map map) {
+		player.getDice();
+		player.whatDidIRoll();
+		map.PrintMap();
+		PlayerControl(player, map);
+	}
 }
