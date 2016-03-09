@@ -1,23 +1,21 @@
-import java.lang.Math;
+public class Dice4 extends Dice {
+	int numSides = 4;
 
-public class Dice4 extends Dice{
-	double numSides = 4;
+	public Dice4() {
+		switch (rand.nextInt(numSides)) {
+		case 0:
+			roll = 1;
+			break;
+		case 1:
+			roll = 2;
+			break;
+		case 2:
+			roll = 3;
+			break;
+		default:
+			roll = 4;
+			break;
+		}
 
-	public void Roll(){
-		System.out.print("Your FOUR sided die rolled a ");
-		if(rand > ((1/numSides)*(numSides-1))){
-			System.out.println("4");
-		
-		}
-		else if(rand > ((1/numSides)*(numSides-2))){
-			System.out.println("3");
-		}
-		else if (rand >((1/numSides)*(numSides-1))){
-			System.out.println("2");
-		}
-		else{
-			System.out.println("1");
-		}
-		
 	}
 }

@@ -12,9 +12,9 @@ public class Player extends Character{
 	Spell[] spells = {arcaneBlast, frostbolt, fireball};
 	int limitBreakStatus = 0;
 	int health = 100;
-
 	int xCoordiante = 0;
 	int yCoordinate = 0;
+	Dice[] playerDice = new Dice[6];
 
 	public Player (String name, int health) {
 		super(name, health);
@@ -114,7 +114,21 @@ public class Player extends Character{
 	public void roll (DiceCup diceCup) {
 		for (int i = 0; i < diceCup.diceArray.length; i++){
 			diceCup.diceArray[i].Roll();
+
+		public void getDice () {
+		DiceCup diceCup = new DiceCup();
+		for (int i = 0; i < playerDice.length; i++){
+			playerDice[i] = diceCup.diceArray[i];
 		}
+	}
+	
+	public void whatDidIRoll () {
+		System.out.println("Your FOUR sided die: " + playerDice[0]);
+		System.out.println("Your SIX sided die: " + playerDice[1]);
+		System.out.println("Your EIGHT sided die: " + playerDice[2]);
+		System.out.println("Your TEN sided die: " + playerDice[3]);
+		System.out.println("Your TWELVE sided die: " + playerDice[4]);
+		System.out.println("Your TWENTY sided die: " + playerDice[5]);
 			
 	}
 
