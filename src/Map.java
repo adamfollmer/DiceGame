@@ -4,8 +4,12 @@ public class Map {
 	int yCoordinate = 0;
 	
 	// String[][]Map = new String[5][5]
-	String[][] map = { { "O", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" },
-			{ "X", "X", "X", "X", "X" }, { "X", "X", "X", "X", "X" } };
+	String[][] map = {{ "O", "X", "X", "X", "X","X"}, 
+			{ "X", "X", "X", "X", "X", "X"}, 
+			{ "X", "X", "X", "X", "X", "X"},
+			{ "X", "X", "X", "X", "X", "X"}, 
+			{ "X", "X", "X", "X", "X", "X"}, 
+			{ "X", "X", "X", "X", "X", "X"}};
 
 	public void PrintMap() {
 		for (int i = 0; i < map.length; i++) {
@@ -56,6 +60,99 @@ public void MapLocation(int x, int y, Map map){
 			}
 		}
 		return yCoordinate;
+	}
+	
+	
+	public void CheckIfEdgeOfMap(int x, int y){
+		Boolean atEdge = false;
+		Boolean atCorner =false;
+		
+		if(x == 0 && y==0){
+			System.out.println("You are at the top left corner");
+			atCorner = true;
+			
+		}
+		else if(x==0 && y ==1){
+			System.out.println("You are at top1");
+			atEdge =true;
+		}
+		else if(x==0 && y==2){
+			System.out.println("You are at top2");
+			atEdge = true;
+		}
+		else if(x==0 && y ==3){
+			System.out.println("You are at top3");
+			atEdge = true;
+		}
+		else if(x==0 && y==4){
+			System.out.println("You are at top4");
+			atEdge = true;
+		}
+		else if(x == 0 && y==5){
+			System.out.println("You are at the top right corner");
+			atCorner = true;
+		}
+		else if(x==5 && y ==1){
+			System.out.println("You are at bottom1");
+			atEdge = true;
+		}
+		else if(x==5 && y==2){
+			System.out.println("You are at bottom2");
+			atEdge = true;
+		}
+		else if(x==5 && y ==3){
+			System.out.println("You are at bottom3");
+			atEdge = true;
+		}
+		else if(x==5 && y==4){
+			System.out.println("You are at bottom4");
+			atEdge = true;
+		}
+		else if(x == 5 && y == 5){
+			System.out.println("You are at the bottom right corner");
+			atCorner = true;
+		}
+		
+		else if(x==5 && y==0){
+			System.out.println("You are at the top left corner");
+			atCorner = true;
+		}
+		else if(x==1 && y==0){
+			System.out.println("You are at leftEdge1");
+			atEdge = true;
+		}
+		else if(x==2 && y==0){
+			System.out.println("You are at leftEdge2");
+			atEdge = true;
+		}
+		else if(x==3 && y==0){
+			System.out.println("You are at leftEdge3");
+			atEdge = true;
+		}
+		else if(x==4 && y==0){
+			System.out.println("You are at leftEdge4");
+			atEdge = true;
+		}
+		
+		
+		
+		else if(x==1 && y==5){
+			System.out.println("You are at rightEdge1");
+			atEdge = true;
+		}
+		else if(x==2 && y==5){
+			System.out.println("You are at rightEdge2");
+			atEdge = true;
+		}
+		else if(x==3 && y==5){
+			System.out.println("You are at rightEdge3");
+			atEdge = true;
+		}
+		else if(x==4 && y==5){
+			System.out.println("You are at rightEdge4");
+			atEdge = true;
+		}
+		
 	}
 
 }

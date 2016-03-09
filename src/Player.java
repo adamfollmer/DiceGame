@@ -78,7 +78,7 @@ public class Player extends Character{
 	public void MoveUp(Map map){
 		xCoordiante = ((Map) map).getXCoordinate();
 		yCoordinate = ((Map) map).getYCoordinate();
-
+		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante-1][yCoordinate ]= "O";
 
@@ -87,6 +87,8 @@ public class Player extends Character{
 	public void MoveDown(Map map){
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
+
+
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante+1][yCoordinate ]= "O";
@@ -96,27 +98,61 @@ public class Player extends Character{
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
 		
+		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante][yCoordinate-1]= "O";
+		
 	}
 
 	public void MoveRight(Map map){
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
+
 		
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
 	
+<<<<<<< HEAD
+=======
 	public void roll (DiceCup diceCup) {
 		for (int i = 0; i < diceCup.diceArray.length; i++){
 			diceCup.diceArray[i].Roll();
 		}
 			
 	}
+>>>>>>> 5ae01216b0ddb9b4391a0023052822aceb370622
 
-
-
-
+	public void TopEdgeMoves(Player player, Map map){
+		player.MoveLeft(map);
+		player.MoveDown(map);
+		player.MoveRight(map);
+	}
+	public void BottomEdgeMoves(Player player, Map map){
+		player.MoveUp(map);
+		player.MoveLeft(map);
+		player.MoveRight(map);
+		
+	}
+	public void LeftEdgeMoves(Player player, Map map){
+		
+	}
+	public void RightEdgeMoves(){
+		
+	}
+	public void TopLeftCorner(){
+		
+	}
+	public void TopRightCorner(){
+		
+	}
+	public void BottomLeftCorner(){
+		
+	}
+	public void BottomRightCorner(){
+		
+	}
+	
+	
 }
 
