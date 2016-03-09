@@ -154,12 +154,6 @@ public class Player extends Character{
 	}
 
 	
-	public void OpenTreasure(){
-		
-	}
-
-
-	
 
 	public void BottomRightCorner(Player player, Map map){
 		player.MoveUp(map);
