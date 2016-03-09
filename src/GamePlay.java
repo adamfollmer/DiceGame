@@ -7,58 +7,37 @@ public class GamePlay {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Welcome to Dragon Slayer");
-		System.out.println();
-		System.out.println("Your character will enter the maze, fight monsters, and collect gear.");
-		System.out.println("Your goal is to get to the Dragon before your foe and slay it.");
-		System.out.println();
-		System.out.println("Here is an explanation of each dice: ");
-		System.out.println("The 4 side dice controls your attack multiplier. \nThe 6 sided dice controls your movement"
-				+ "\nThe 8 sided dice is your physical attack. \nThe 10 sided dice selects your magic spell."
-				+ "\nThe 12 sided dice decides your defense against enemy attacks. \n The 20 sided dice adds to your Limit Break");
-		System.out.println();
-		System.out.println("For magic spells - you have three. If you roll less than a 4 it is your weakest spell."
-				+ "\nIf you roll between a 4 and a 7 is a medium spell. \nIf you roll an 8 or more it is your most powerful spell.");
-		System.out.println("All three spells become more powerful based on the attack multiplier.");
-		System.out.println(
-				"For physical attacks - your current weapon, the amount you roll, and the attack multiplier equal your total damage");
-		System.out
-				.println("Once your Limit Break hits 100, you can perform a special attack that does a lot of damage");
-		System.out.println();
 
-		boolean gameStartMenu = true;
-		;
-		while (gameStartMenu) {
+		boolean gameStartMenu = true;;
+		while (gameStartMenu){
 			System.out.println("Play [p], Instructions [i]");
 			String answer = scan.next();
 
-			if (answer.equals("i")) {
+			if(answer.equals("i")){
 				System.out.println("Your character will enter the maze, fight monsters, and collect gear.");
 				System.out.println("Your goal is to get to the Dragon before your foe and slay it.");
 				System.out.println();
 				System.out.println("Here is an explanation of each dice: ");
-				System.out.println(
-						"The 4 side dice controls your attack multiplier. \nThe 6 sided dice controls your movement"
-								+ "\nThe 8 sided dice is your physical attack. \nThe 10 sided dice selects your magic spell."
-								+ "\nThe 12 sided dice decides your defense against enemy attacks. \n The 20 sided dice adds to your Limit Break");
+				System.out.println("The 4 side dice controls your attack multiplier. \nThe 6 sided dice controls your movement"
+						+ "\nThe 8 sided dice is your physical attack. \nThe 10 sided dice selects your magic spell."
+						+ "\nThe 12 sided dice decides your defense against enemy attacks. \n The 20 sided dice adds to your Limit Break");
 				System.out.println();
-				System.out.println(
-						"For magic spells - you have three. If you roll less than a 4 it is your weakest spell."
-								+ "\nIf you roll between a 4 and a 7 is a medium spell. \nIf you roll an 8 or more it is your most powerful spell.");
+				System.out.println("For magic spells - you have three. If you roll less than a 4 it is your weakest spell."
+						+ "\nIf you roll between a 4 and a 7 is a medium spell. \nIf you roll an 8 or more it is your most powerful spell.");
 				System.out.println("All three spells become more powerful based on the attack multiplier.");
 				System.out.println(
 						"For physical attacks - your current weapon, the amount you roll, and the attack multiplier equal your total damage");
-				System.out.println(
-						"Once your Limit Break hits 100, you can perform a special attack that does a lot of damage");
+				System.out
+				.println("Once your Limit Break hits 100, you can perform a special attack that does a lot of damage");
 				System.out.println();
-			} else if (answer.equals("p")) {
+			}
+			else if(answer.equals("p")){
 				gameStartMenu = false;
 			}
 		}
 
 	}
-
-	// The below function is meant to be used for both players if a two player
-	// game
+	//The below function is meant to be used for both players if a two player game
 	public String playerName() {
 		System.out.println();
 		Scanner scanner = new Scanner(System.in);
@@ -77,29 +56,17 @@ public class GamePlay {
 	}
 
 	public void battleSequence(Player player, Enemy enemy) {
-		System.out.println("You encountered a " + enemy.name);
-		Random rand = new Random();
 		while (player.playerIsDead() == false && enemy.enemyIsDead() == false) {
-			if (rand.nextInt(1) == 0) {
-				enemy.attackPlayer(player);
-			} else {
-				player.selectAttack(enemy);
-			}
-			System.out.println("Rerolling to set up a new attack!");
-			player.getDice();
-			player.combatRollAndStats(enemy);
-		}
-		if (enemy.enemyIsDead() == true){
-			Chest chest = enemy.treasure.chest;
+
 		}
 	}
 
-	public void PlayerControl(Player player, Map map) {
+	public void PlayerControl(Player player, Map map){
 		boolean control = true;
 
 		boolean atTopEdge = false;
 		boolean atBottomEdge = false;
-		boolean atleftEdge = false;
+		boolean atleftEdge =false;
 		boolean atRightEdge = false;
 
 		boolean atTopLeftCorner = false;
@@ -108,7 +75,7 @@ public class GamePlay {
 		boolean atBottomRightCorner = false;
 
 		Scanner scan = new Scanner(System.in);
-		while (control) {
+		while(control){
 			System.out.println("Up [w] Down [s] Left [a] Right [d]");
 			String playerMove = scan.next();
 
@@ -122,10 +89,6 @@ public class GamePlay {
 			atBottomLeftCorner = map.CheckIfBottomLeftCornerOfMap(map.getXCoordinate(), map.getYCoordinate());
 			atBottomRightCorner = map.CheckIfBottomRightCornerOfMap(map.getXCoordinate(), map.getYCoordinate());
 
-			if (playerMove.equals("w")) {
-				if (atTopLeftCorner) {
-					System.out.println("You can't move up anymore");
-				} else if (atTopRightCorner) {
 
 			if(playerMove.equals("w")){
 				if(atTopLeftCorner){
@@ -136,148 +99,55 @@ public class GamePlay {
 				else if(atTopRightCorner){
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
-				} else if (atBottomRightCorner) {
+				}
+				else if (atBottomRightCorner){
 					player.MoveUp(map);
-				} else if (atBottomLeftCorner) {
-					player.MoveUp(map);
-				} else if (atTopEdge) {
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atBottomLeftCorner){
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atTopEdge){
 					map.PrintMap();
 					System.out.println("You can't move up anymore");
-				} else if (atBottomEdge) {
+				}
+				else if(atBottomEdge){
 					player.MoveUp(map);
-				} else if (atleftEdge) {
-					player.MoveUp(map);
-				} else if (atRightEdge) {
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atleftEdge){
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
-				}
-
-				else {
-				}
+					enterDoor();
 				}
 				else if (atRightEdge){
 					player.MoveUp(map);	
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 
 				else{
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
-			} else if (playerMove.equals("s")) {
-				/*
-				 * player.MoveDown(map); map.PrintMap();
-				 * map.CheckIfEdgeOfMap(map.getXCoordinate(),
-				 * map.getYCoordinate());
-				 */
-				if (atTopLeftCorner) {
-					player.MoveDown(map);
-				} else if (atTopRightCorner) {
-					player.MoveDown(map);
-				} else if (atBottomRightCorner) {
-					System.out.println("You can't move down anymore (bottomRightCorner)");
-				} else if (atBottomLeftCorner) {
-					System.out.println("You can't move down anymore (bottomLeftCorner)");
-				} else if (atTopEdge) {
-					player.MoveDown(map);
-				} else if (atBottomEdge) {
-					System.out.println("You can't move down anymore (BottomEdge)");
-				} else if (atleftEdge) {
-					player.MoveDown(map);
-				} else if (atRightEdge) {
-					player.MoveDown(map);
-				} else {
-					player.MoveDown(map);
-				}
-				map.PrintMap();
 
-			} else if (playerMove.equals("a")) {
-				/*
-				 * player.MoveLeft(map); map.PrintMap();
-				 * map.CheckIfEdgeOfMap(map.getXCoordinate(),
-				 * map.getYCoordinate());
-				 */
-				if (atTopLeftCorner) {
-					System.out.println("You can't move left anymore");
-				} else if (atTopRightCorner) {
-					player.MoveLeft(map);
-
-				} else if (atBottomRightCorner) {
-					player.MoveLeft(map);
-				} else if (atBottomLeftCorner) {
-					System.out.println("You can't move left anymore");
-				} else if (atTopEdge) {
-					System.out.println("You can't move left anymore");
-				} else if (atBottomEdge) {
-					player.MoveLeft(map);
-				} else if (atleftEdge) {
-					System.out.println("You can't move left anymore");
-				} else if (atRightEdge) {
-					player.MoveLeft(map);
-				} else {
-					player.MoveLeft(map);
-				}
-				map.PrintMap();
-
-			} else if (playerMove.equals("d")) {
-				/*
-				 * player.MoveRight(map); map.PrintMap();
-				 * map.CheckIfEdgeOfMap(map.getXCoordinate(),
-				 * map.getYCoordinate());
-				 */
-
-				if (atTopLeftCorner) {
-					player.MoveRight(map);
-				} else if (atTopRightCorner) {
-					System.out.println("You can't move right anymore");
-				} else if (atBottomRightCorner) {
-					System.out.println("You can't move right anymore");
-				} else if (atBottomLeftCorner) {
-					player.MoveRight(map);
-				} else if (atTopEdge) {
-					player.MoveRight(map);
-				} else if (atBottomEdge) {
-					player.MoveRight(map);
-				} else if (atleftEdge) {
-					player.MoveRight(map);
-				} else if (atRightEdge) {
-					System.out.println("You can't move right anymore");
-				} else {
-					player.MoveRight(map);
-				}
-				map.PrintMap();
-
-			} else {
-				
-			}
 			}
 			else if(playerMove.equals("s")){
 		
 				if(atTopLeftCorner){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if(atTopRightCorner){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atBottomRightCorner){
 					map.PrintMap();
@@ -290,7 +160,7 @@ public class GamePlay {
 				else if (atTopEdge){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if(atBottomEdge){
 					map.PrintMap();
@@ -299,17 +169,17 @@ public class GamePlay {
 				else if (atleftEdge){
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atRightEdge){
 					player.MoveDown(map);	
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else{
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 			}
 			else if(playerMove.equals("a")){
@@ -320,13 +190,13 @@ public class GamePlay {
 				else if(atTopRightCorner){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 
 				}
 				else if (atBottomRightCorner){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atBottomLeftCorner){
 					map.PrintMap();
@@ -339,7 +209,7 @@ public class GamePlay {
 				else if(atBottomEdge){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atleftEdge){
 					map.PrintMap();
@@ -348,12 +218,12 @@ public class GamePlay {
 				else if (atRightEdge){
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else{
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 
 			}
@@ -362,7 +232,7 @@ public class GamePlay {
 				if(atTopLeftCorner){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if(atTopRightCorner){
 					map.PrintMap();
@@ -375,22 +245,22 @@ public class GamePlay {
 				else if (atBottomLeftCorner){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atTopEdge){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if(atBottomEdge){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atleftEdge){
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 				else if (atRightEdge){
 					map.PrintMap();
@@ -399,7 +269,7 @@ public class GamePlay {
 				else{
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor();
 				}
 			}
 			else{
@@ -415,51 +285,72 @@ public class GamePlay {
 		int value = rand.nextInt(10);
 		switch (value) {
 		case 0:
+			System.out.println("You encounted a Bandit!");
 			return new Enemy("Bandit", 10, 3);
 		case 1:
+			System.out.println("You encounted a Gremlin!");
 			return new Enemy("Gremlin", 15, 4);
 		case 2:
+			System.out.println("You encounted a Smogger!");
 			return new Enemy("Smogger", 20, 4);
 		case 3:
+			System.out.println("You encounted a Wolf!");
 			return new Enemy("Wolf", 25, 5);
 		case 4:
+			System.out.println("You encounted a Golem!");
 			return new Enemy("Golem", 30, 6);
 		case 5:
+			System.out.println("You encounted a Aerostiker!");
 			return new Enemy("Aerostriker", 5, 40);
 		case 6:
+			System.out.println("You encounted a Zombie!");
 			return new Enemy("Zombie", 50, 5);
 		case 7:
+			System.out.println("You encounted a Gargoyle!");
 			return new Enemy("Gargoyle", 40, 10);
 		case 8:
+			System.out.println("You encounted a Behemoth!");
 			return new Enemy("Behemoth", 50, 10);
 		case 9:
+			System.out.println("You encounted a Diablo!");
 			return new Enemy("Diablo", 100, 20);
 		default:
+			System.out.println("You encounted a Cactuar!");
 			return new Enemy("Cactuar", 100, 1);
 		}
 	}
-
-	public Treasure randomTreasure() {
-
+	
+	public Treasure randomTreasure(){
 		return new Treasure();
 	}
 
-	public void enterDoor(Player player) {
+	public void enterDoor() {
 		Random rand = new Random();
 		int value = rand.nextInt(3);
 		switch (value) {
-		case 0:
-			battleSequence(player, randomEnemy());
-			System.out.println();
+		case 0: 
+			randomEnemy();
 			break;
 		case 1:
 			System.out.println("You found a treasure chest!");
-			// System.out.println(randomTreasure());
+			CheckTreasure(randomTreasure());
+			//System.out.println(randomTreasure());
 			break;
 		default:
 			System.out.println("You entered an empty room.");
-			// System.out.println();
+			//System.out.println();
 			break;
 		}
 	}
-}
+	
+	public void CheckTreasure(Treasure treasure){
+		//if(Weapon instanceof Chest){
+			
+		}
+	}
+	
+
+
+
+
+
