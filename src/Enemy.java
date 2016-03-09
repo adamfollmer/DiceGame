@@ -22,7 +22,7 @@ public class Enemy extends Character{
 	}
 	
 	public boolean enemyIsDead () {
-		if (health > 0) {
+		if (health <= 0) {
 			return true;
 		} else {
 			return false;
