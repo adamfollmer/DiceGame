@@ -137,12 +137,12 @@ public class AI extends Player{
 					} else if (atBottomRightCorner) {
 						computer.MoveUp(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atBottomLeftCorner) {
 						computer.MoveUp(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer,gamePlay);
+						ComputerEnterDoor(computer,gamePlay, map);
 						moveCounter--;
 					} else if (atTopEdge) {
 						map.PrintMap();
@@ -150,24 +150,24 @@ public class AI extends Player{
 					} else if (atBottomEdge) {
 						computer.MoveUp(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atleftEdge) {
 						computer.MoveUp(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atRightEdge) {
 						computer.MoveUp(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					}
 
 					else {
 						computer.MoveUp(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					}
 
@@ -176,12 +176,12 @@ public class AI extends Player{
 					if (atTopLeftCorner) {
 						computer.MoveDown(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atTopRightCorner) {
 						computer.MoveDown(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atBottomRightCorner) {
 						map.PrintMap();
@@ -192,7 +192,7 @@ public class AI extends Player{
 					} else if (atTopEdge) {
 						computer.MoveDown(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atBottomEdge) {
 						map.PrintMap();
@@ -200,17 +200,17 @@ public class AI extends Player{
 					} else if (atleftEdge) {
 						computer.MoveDown(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atRightEdge) {
 						computer.MoveDown(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else {
 						computer.MoveDown(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					}
 				} else if (computerMove == 2) {
@@ -220,13 +220,13 @@ public class AI extends Player{
 					} else if (atTopRightCorner) {
 						computer.MoveLeft(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 
 					} else if (atBottomRightCorner) {
 						computer.MoveLeft(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atBottomLeftCorner) {
 						map.PrintMap();
@@ -237,7 +237,7 @@ public class AI extends Player{
 					} else if (atBottomEdge) {
 						computer.MoveLeft(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay,map);
 						moveCounter--;
 					} else if (atleftEdge) {
 						map.PrintMap();
@@ -245,12 +245,12 @@ public class AI extends Player{
 					} else if (atRightEdge) {
 						computer.MoveLeft(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else {
 						computer.MoveLeft(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					}
 
@@ -259,7 +259,7 @@ public class AI extends Player{
 					if (atTopLeftCorner) {
 						computer.MoveRight(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atTopRightCorner) {
 						map.PrintMap();
@@ -270,22 +270,22 @@ public class AI extends Player{
 					} else if (atBottomLeftCorner) {
 						computer.MoveRight(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atTopEdge) {
 						computer.MoveRight(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atBottomEdge) {
 						computer.MoveRight(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atleftEdge) {
 						computer.MoveRight(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					} else if (atRightEdge) {
 						map.PrintMap();
@@ -293,7 +293,7 @@ public class AI extends Player{
 					} else {
 						computer.MoveRight(map);
 						map.PrintMap();
-						ComputerEnterDoor(computer, gamePlay);
+						ComputerEnterDoor(computer, gamePlay, map);
 						moveCounter--;
 					}
 				} else {
@@ -306,12 +306,12 @@ public class AI extends Player{
 
 		}
 
-		public void ComputerEnterDoor(AI computer, GamePlay gamePlay) {
+		public void ComputerEnterDoor(AI computer, GamePlay gamePlay, Map map) {
 			Random rand = new Random();
 			int value = rand.nextInt(3);
 			switch (value) {
 			case 0:
-				gamePlay.battleSequence(computer, gamePlay.randomEnemy());
+				gamePlay.battleSequence(computer, gamePlay.randomEnemy(), map);
 				break;
 			case 1:
 				System.out.println("You found a treasure chest!");

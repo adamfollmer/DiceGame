@@ -177,7 +177,7 @@ public class Player extends Character {
 		player.MoveLeft(map);
 	}
 
-	public void CheckTreasure(Chest chest) {
+	public void CheckTreasure(Chest chest, Map map) {
 		Scanner scanner = new Scanner(System.in);
 		if (chest.itemType.equals("ITEM")) {
 			System.out.println(name + " found a " + chest.name + " that returns " + chest.generalStatBoost
@@ -190,7 +190,7 @@ public class Player extends Character {
 				EquipNew(chest);
 			} else {
 				System.out.println("You're keeping your old item.");
-				
+				map.PrintMap();
 			}
 
 		}

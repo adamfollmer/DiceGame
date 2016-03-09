@@ -74,7 +74,7 @@ public class GamePlay {
 		return userInput;
 	}
 
-	public void battleSequence(Player player, Enemy enemy) {
+	public void battleSequence(Player player, Enemy enemy, Map map) {
 		System.out.println("You encountered a " + enemy.name);
 		Random rand = new Random();
 		while (player.health >= 0 && enemy.health >= 0) {
@@ -94,7 +94,7 @@ public class GamePlay {
 		if (enemy.enemyIsDead() == true) {
 			Chest chest = enemy.treasure.chest;
 			System.out.println("The enemy dropped a chest!");
-			player.CheckTreasure(chest);
+			player.CheckTreasure(chest, map);
 
 		}
 	}
@@ -146,12 +146,12 @@ public class GamePlay {
 				} else if (atBottomRightCorner) {
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atTopEdge) {
 					map.PrintMap();
@@ -159,24 +159,24 @@ public class GamePlay {
 				} else if (atBottomEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atleftEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atRightEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				}
 
 				else {
 					player.MoveUp(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				}
 
@@ -185,13 +185,13 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atTopRightCorner) {
 					player.MoveDown(map);
 					map.PrintMap();
 					moveCounter--;
-					enterDoor(player);
+					enterDoor(player, map);
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
 					System.out.println("You can't move down anymore");
@@ -201,7 +201,7 @@ public class GamePlay {
 				} else if (atTopEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atBottomEdge) {
 					map.PrintMap();
@@ -209,17 +209,17 @@ public class GamePlay {
 				} else if (atleftEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atRightEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else {
 					player.MoveDown(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				}
 			} else if (playerMove.equals("a")) {
@@ -229,13 +229,13 @@ public class GamePlay {
 				} else if (atTopRightCorner) {
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 
 				} else if (atBottomRightCorner) {
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
@@ -246,7 +246,7 @@ public class GamePlay {
 				} else if (atBottomEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atleftEdge) {
 					map.PrintMap();
@@ -254,12 +254,12 @@ public class GamePlay {
 				} else if (atRightEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else {
 					player.MoveLeft(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				}
 
@@ -268,7 +268,7 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atTopRightCorner) {
 					map.PrintMap();
@@ -279,22 +279,22 @@ public class GamePlay {
 				} else if (atBottomLeftCorner) {
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atTopEdge) {
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atBottomEdge) {
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atleftEdge) {
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				} else if (atRightEdge) {
 					map.PrintMap();
@@ -302,7 +302,7 @@ public class GamePlay {
 				} else {
 					player.MoveRight(map);
 					map.PrintMap();
-					enterDoor(player);
+					enterDoor(player, map);
 					moveCounter--;
 				}
 			} else {
@@ -347,16 +347,16 @@ public class GamePlay {
 		return new Treasure().chest;
 	}
 
-	public void enterDoor(Player player) {
+	public void enterDoor(Player player, Map map) {
 		Random rand = new Random();
 		int value = rand.nextInt(3);
 		switch (value) {
 		case 0:
-			battleSequence(player, randomEnemy());
+			battleSequence(player, randomEnemy(), map);
 			break;
 		case 1:
 			System.out.println("You found a treasure chest!");
-			player.CheckTreasure(randomTreasure());
+			player.CheckTreasure(randomTreasure(), map);
 
 			break;
 		default:
