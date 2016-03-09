@@ -12,9 +12,9 @@ public class Player extends Character{
 	Spell[] spells = {arcaneBlast, frostbolt, fireball};
 	int limitBreakStatus = 0;
 	int health = 100;
-
 	int xCoordiante = 0;
 	int yCoordinate = 0;
+	Dice[] playerDice = new Dice[6];
 
 	public Player (String name, int health) {
 		super(name, health);
@@ -112,10 +112,16 @@ public class Player extends Character{
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
+	public void getDice () {
+		DiceCup diceCup = new DiceCup();
+		for (int i = 0; i < playerDice.length; i++){
+			playerDice[i] = diceCup.diceArray[i];
+		}
+	}
 	
-	public void roll (DiceCup diceCup) {
-		for (int i = 0; i < diceCup.diceArray.length; i++){
-			diceCup.diceArray[i].Roll();
+	public void whatDidIRoll () {
+		for (int i = 0; i < playerDice.length; i++){
+			playerDice[i].Roll();
 		}
 			
 	}
