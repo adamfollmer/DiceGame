@@ -151,11 +151,11 @@ public class GamePlay {
 				}
 				else if (atBottomRightCorner){
 					map.PrintMap();
-					System.out.println("You can't move down anymore (bottomRightCorner)");			
+					System.out.println("You can't move down anymore");			
 				}
 				else if (atBottomLeftCorner){
 					map.PrintMap();
-					System.out.println("You can't move down anymore (bottomLeftCorner)");		
+					System.out.println("You can't move down anymore");		
 				}
 				else if (atTopEdge){
 					player.MoveDown(map);
@@ -164,7 +164,7 @@ public class GamePlay {
 				}
 				else if(atBottomEdge){
 					map.PrintMap();
-					System.out.println("You can't move down anymore (BottomEdge)");
+					System.out.println("You can't move down anymore");
 				}
 				else if (atleftEdge){
 					player.MoveDown(map);
@@ -273,6 +273,7 @@ public class GamePlay {
 				}
 			}
 			else{
+				map.PrintMap();
 				System.out.println("Invalid Entry");
 			}
 
@@ -318,6 +319,7 @@ public class GamePlay {
 			return new Enemy("Cactuar", 100, 1);
 		}
 	}
+	
 	public Treasure randomTreasure(){
 		return new Treasure();
 	}
@@ -330,11 +332,12 @@ public class GamePlay {
 			randomEnemy();
 			break;
 		case 1:
-			randomTreasure();
+			System.out.println("You found a treasure chest!");
+			//System.out.println(randomTreasure());
 			break;
 		default:
 			System.out.println("You entered an empty room.");
-			System.out.println();
+			//System.out.println();
 			break;
 		}
 	}
