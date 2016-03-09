@@ -8,9 +8,17 @@ public class Enemy extends Character{
 		attack = Attack;
 		
 	}
-
+	//Likely need to inflate enemy attack values 
 	public void attackPlayer (Player player) {
-		player.health = player.health - attack;
+		int defense = player.playerDice[4].roll + player.armor.armorBonus;
+		if (attack - defense < 1) {
+			System.out.println(player.name + "'s defense is so high," + name + "'s attack did no damage.");
+			System.out.println();
+		} else{
+			player.health = player.health - (attack - defense);
+			System.out.println(name + " did " + (attack - defense) + " damage to " + player.name);
+			System.out.println();
+		}
 	}
 	
 	public boolean enemyIsDead () {
