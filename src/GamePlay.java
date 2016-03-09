@@ -46,7 +46,6 @@ public class GamePlay {
 		}
 	}
 
-	//During battle sequence, make it a while loop
 	public void PlayerControl(Player player, Map map){
 		boolean control = true;
 		Scanner scan = new Scanner(System.in);

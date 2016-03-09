@@ -107,6 +107,13 @@ public class Player extends Character{
 		map.map[xCoordiante][yCoordinate ]= "X";
 		map.map[xCoordiante][yCoordinate+1]= "O";
 	}
+	
+	public void roll (DiceCup diceCup) {
+		for (int i = 0; i < diceCup.diceArray.length; i++){
+			diceCup.diceArray[i].Roll();
+		}
+			
+	}
 
 
 
