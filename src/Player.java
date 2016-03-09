@@ -37,17 +37,20 @@ public class Player extends Character {
 	}
 
 	public void selectAttack(Enemy enemy) {
-		System.out.println("Which attack will you use: PHYSICAL, MAGIC, or LIMITBREAK?");
+		System.out.println("Which attack will you use: PHYSICAL, MAGIC, or LIMITBREAK? (P, M, or L)");
 		Scanner scanner = new Scanner(System.in);
 		String userInput = scanner.nextLine().toUpperCase();
 		switch (userInput) {
-		case "PHYSICAL":
+		case "PHYSICAL": 
+		case "P":
 			physicalAttack(enemy);
 			break;
 		case "MAGIC":
+		case "M":
 			magicAttack(enemy);
 			break;
-		case ("LIMITBREAK"):
+		case "LIMITBREAK":
+		case "L":
 			limitBreak(enemy);
 			break;
 		default:
@@ -73,6 +76,8 @@ public class Player extends Character {
 	public void limitBreak(Enemy enemy) {
 		if (limitBreakStatus >= 100) {
 			enemy.health = enemy.health - (50 * playerDice[0].roll);
+		} else {
+			System.out.println("You don't have enough energy.");
 		}
 	}
 
