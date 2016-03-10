@@ -120,7 +120,7 @@ public class GamePlay {
 		Scanner scan = new Scanner(System.in);
 		int moveCounter = player.playerDice[1].roll;
 
-		System.out.println("Moves left " + moveCounter);
+		System.out.println("Moves left: " + moveCounter);
 		while (isTurn) {
 			if(moveCounter <= 1){
 

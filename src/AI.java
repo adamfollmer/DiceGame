@@ -93,7 +93,9 @@ public class AI extends Player {
 		boolean atBottomLeftCorner = false;
 		boolean atBottomRightCorner = false;
 		int moveCounter = computer.playerDice[1].roll;
-
+		System.out.println("Moves left: " + moveCounter);
+		
+		
 		System.out.println("computer move rolled : " + computer.playerDice[1].roll);
 		while (isTurn) {
 			int computerMove = rand.nextInt(4);
@@ -101,6 +103,7 @@ public class AI extends Player {
 			if (moveCounter <= 1) {
 				isTurn = false;
 			}
+			
 			atTopEdge = map.CheckIfTopEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
 			atBottomEdge = map.CheckIfBottomEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
 			atleftEdge = map.CheckIfLeftEdgeOfMap(map.getXCoordinate(), map.getYCoordinate());
@@ -286,6 +289,11 @@ public class AI extends Player {
 			// System.out.println();
 			break;
 		}
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Press any key to continue.");
+		scan.next();
+		
 	}
 
 	public void ComputerMoveUp(Map map, AI computer, GamePlay gamePlay) {

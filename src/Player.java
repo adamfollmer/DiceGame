@@ -16,9 +16,6 @@ public class Player extends Character {
 	int yCoordinate = 0;
 	Dice[] playerDice = new Dice[6];
 	boolean isAI = false;
-	boolean playerOneTurn = true;
-	boolean playerTwoTurn = true;
-
 	String player1 = "1";
 	String player2 = "2";
 
@@ -108,14 +105,6 @@ public class Player extends Character {
 
 		map.map[xCoordiante][yCoordinate] = "X";
 		map.map[xCoordiante - 1][yCoordinate] = "O";
-
-		/*
-		 * if(playerOneTurn){ map.map[xCoordiante][yCoordinate ]= "X";
-		 * map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "1"; } else
-		 * if(playerTwoTurn){ map.map[xCoordiante][yCoordinate ]= "X";
-		 * map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "2"; }
-		 */
-
 	}
 
 	public void MoveDown(Map map) {
@@ -124,13 +113,6 @@ public class Player extends Character {
 
 		map.map[xCoordiante][yCoordinate] = "X";
 		map.map[xCoordiante + 1][yCoordinate] = "O";
-		/*
-		 * if(playerOneTurn){ map.map[xCoordiante][yCoordinate ]= "X";
-		 * map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "1"; } else
-		 * if(playerTwoTurn){ map.map[xCoordiante][yCoordinate ]= "X";
-		 * map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "2"; }
-		 */
-
 	}
 
 	public void MoveLeft(Map map) {
