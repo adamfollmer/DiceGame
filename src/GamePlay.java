@@ -402,13 +402,22 @@ public class GamePlay {
 			while(player1.health >= 0 || player2.health >=0){
 				PlayerTurn(player1, map);
 				PlayerTurn(player2, map);
-
+			}
+			if (player1.health <=0){
+				System.out.println(player2.name + " wins");
+			} else {
+				System.out.println(player1.name + " wins!");
 			}
 		}
 		else{
 			while(player1.health>=0 || computerPlayer.health >=0){
 				PlayerTurn(player1, map);
 				ComputerTurn(computerPlayer, map, gamePlay);
+			}
+			if (player1.health <= 0) {
+				System.out.println(computerPlayer.name + " wins!");
+			} else {
+				System.out.println(player1.name + " wins!");
 			}
 		}
 	}
