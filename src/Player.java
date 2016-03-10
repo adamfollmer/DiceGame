@@ -18,11 +18,10 @@ public class Player extends Character {
 	boolean isAI = false;
 	boolean playerOneTurn = true;
 	boolean playerTwoTurn = true;
-	
-	String player1 ="1";
+
+	String player1 = "1";
 	String player2 = "2";
-	
-	
+
 	public Player(String name, int health) {
 		super(name, health);
 		backpack.add(new Item("Potion", 50, "ITEM"));
@@ -43,7 +42,7 @@ public class Player extends Character {
 		Scanner scanner = new Scanner(System.in);
 		String userInput = scanner.nextLine().toUpperCase();
 		switch (userInput) {
-		case "PHYSICAL": 
+		case "PHYSICAL":
 		case "P":
 			physicalAttack(enemy);
 			break;
@@ -56,33 +55,40 @@ public class Player extends Character {
 			limitBreak(enemy);
 			break;
 		default:
-			System.out.println("You shouldn't see this");
+			System.out.println("You tripped and didn't attack!");
 			break;
 		}
+		System.out.println();
 	}
 
 	public void physicalAttack(Enemy enemy) {
-		enemy.health = enemy.health - (playerDice[2].roll * playerDice[0].roll + weapon.generalStatBoost);
-		System.out.println(name + " did " + (playerDice[2].roll * playerDice[0].roll + weapon.generalStatBoost) + " damage to " + enemy.name);
+		int physicalDamage = playerDice[2].roll * playerDice[0].roll + weapon.generalStatBoost;
+		enemy.health = enemy.health - physicalDamage;
+		System.out.println(name + " did " + physicalDamage + " damage to " + enemy.name);
 	}
 
 	public void magicAttack(Enemy enemy) {
+		int spellDamage;
 		if (playerDice[3].roll <= 3) {
-			enemy.health = enemy.health - (spells[0].spellDamage * playerDice[0].roll);
-			System.out.println(name + " used " + spells[0].spellName + " and did " +(spells[0].spellDamage * playerDice[0].roll) + " damage.");
+			spellDamage = spells[0].spellDamage * playerDice[0].roll;
+			enemy.health = enemy.health - spellDamage;
+			System.out.println(name + " used " + spells[0].spellName + " and did " + spellDamage + " damage.");
 		} else if (playerDice[3].roll <= 7) {
-			enemy.health = enemy.health - (spells[1].spellDamage * playerDice[0].roll);
-			System.out.println(name + " used " + spells[1].spellName + " and did " +(spells[1].spellDamage * playerDice[1].roll) + " damage.");
+			spellDamage = spells[1].spellDamage * playerDice[0].roll;
+			enemy.health = enemy.health - spellDamage;
+			System.out.println(name + " used " + spells[1].spellName + " and did " + spellDamage + " damage.");
 		} else {
-			enemy.health = enemy.health - (spells[2].spellDamage * playerDice[0].roll);
-			System.out.println(name + " used " + spells[2].spellName + " and did " +(spells[2].spellDamage * playerDice[2].roll) + " damage.");
+			spellDamage = spells[2].spellDamage * playerDice[0].roll;
+			enemy.health = enemy.health - spellDamage;
+			System.out.println(name + " used " + spells[2].spellName + " and did " + spellDamage + " damage.");
 		}
 	}
 
 	public void limitBreak(Enemy enemy) {
 		if (limitBreakStatus >= 100) {
-			enemy.health = enemy.health - (50 * playerDice[0].roll + weapon.generalStatBoost);
-			System.out.println(name + " used Limit Break! And did " + (50 * playerDice[0].roll + weapon.generalStatBoost) + " damage to " + enemy.name);
+			int limitBreakDamage = 50 * playerDice[0].roll + weapon.generalStatBoost;
+			enemy.health = enemy.health - limitBreakDamage;
+			System.out.println(name + " used Limit Break! And did " + limitBreakDamage + " damage to " + enemy.name);
 		} else {
 			System.out.println(name + " doesn't have enough energy.");
 		}
@@ -100,42 +106,30 @@ public class Player extends Character {
 		xCoordiante = ((Map) map).getXCoordinate();
 		yCoordinate = ((Map) map).getYCoordinate();
 
-		
-		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante - 1][yCoordinate]= "O";
-		
-/*		
-		if(playerOneTurn){
-			map.map[xCoordiante][yCoordinate ]= "X";
-			map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "1";
-		}
-		else if(playerTwoTurn){
-			map.map[xCoordiante][yCoordinate ]= "X";
-			map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "2";
-		}
-*/
+		map.map[xCoordiante][yCoordinate] = "X";
+		map.map[xCoordiante - 1][yCoordinate] = "O";
 
-
+		/*
+		 * if(playerOneTurn){ map.map[xCoordiante][yCoordinate ]= "X";
+		 * map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "1"; } else
+		 * if(playerTwoTurn){ map.map[xCoordiante][yCoordinate ]= "X";
+		 * map.map[xCoordiante - playerDice[1].roll][yCoordinate ]= "2"; }
+		 */
 
 	}
 
 	public void MoveDown(Map map) {
 		xCoordiante = map.getXCoordinate();
 		yCoordinate = map.getYCoordinate();
-		
-		
-		map.map[xCoordiante][yCoordinate ]= "X";
-		map.map[xCoordiante+1][yCoordinate]= "O";
+
+		map.map[xCoordiante][yCoordinate] = "X";
+		map.map[xCoordiante + 1][yCoordinate] = "O";
 		/*
-		if(playerOneTurn){
-			map.map[xCoordiante][yCoordinate ]= "X";
-			map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "1";
-		}
-		else if(playerTwoTurn){
-			map.map[xCoordiante][yCoordinate ]= "X";
-			map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "2";
-		}
-*/
+		 * if(playerOneTurn){ map.map[xCoordiante][yCoordinate ]= "X";
+		 * map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "1"; } else
+		 * if(playerTwoTurn){ map.map[xCoordiante][yCoordinate ]= "X";
+		 * map.map[xCoordiante + playerDice[1].roll][yCoordinate ]= "2"; }
+		 */
 
 	}
 
@@ -172,6 +166,7 @@ public class Player extends Character {
 	}
 
 	public void combatRollAndStats(Enemy enemy) {
+		System.out.println();
 		System.out.println("Your ATTACK MULTIPLIER die: " + playerDice[0].roll);
 		System.out.println("Your PHYSICAL ATTACK die: " + playerDice[2].roll);
 		System.out.println("Your MAGIC ATTACK die: " + playerDice[3].roll);
@@ -195,7 +190,8 @@ public class Player extends Character {
 					+ " health when used in battle.");
 			backpack.add((Item) chest);
 		} else {
-			System.out.println(name + " found a " + chest.name + " that has a bonus of " + chest.generalStatBoost + ".");
+			System.out
+					.println(name + " found a " + chest.name + " that has a bonus of " + chest.generalStatBoost + ".");
 			System.out.println("Do you want to keep it? YES or NO");
 			if (scanner.nextLine().toUpperCase().equals("YES")) {
 				EquipNew(chest);
@@ -210,17 +206,21 @@ public class Player extends Character {
 	public void EquipNew(Chest chest) {
 		if (chest.itemType.equals("WEAPON")) {
 			weapon = (Weapon) chest;
-			System.out.println(name +" equipped the " + weapon.name + ".");
+			System.out.println(name + " equipped the " + weapon.name + ".");
 		} else {
 			armor = (Armor) chest;
 			System.out.println(name + " equipped the " + armor.name + ".");
 		}
 	}
-	
+
 	public void BackPackContents() {
-		System.out.print(name + " backpack's contains: ");
-		for (Item item : backpack) {
-			System.out.println(item.name);
+		if (backpack.isEmpty() == true) {
+			System.out.println(name + "'s backpack is empty!");
+		} else {
+			System.out.print(name + " backpack's contains: ");
+			for (Item item : backpack) {
+				System.out.println(item.name);
+			}
 		}
 	}
 
@@ -248,7 +248,7 @@ public class Player extends Character {
 			}
 		}
 	}
-	
+
 	public void CheckTreasureAI(Chest chest) {
 		if (chest.itemType.equals("ITEM")) {
 			System.out.println(
