@@ -81,13 +81,9 @@ public class AI extends Player {
 		}
 	}
 
-	public void movement() {
-	}
-
 	public void ComputerControl(AI computer, Map map, GamePlay gamePlay) {
 		boolean isTurn = true;
 		Random rand = new Random();
-		int computerMove = rand.nextInt(4);
 		boolean atTopEdge = false;
 		boolean atBottomEdge = false;
 		boolean atleftEdge = false;
@@ -100,6 +96,8 @@ public class AI extends Player {
 
 		System.out.println("computer move rolled : " + computer.playerDice[1].roll);
 		while (isTurn) {
+			int computerMove = rand.nextInt(4);
+
 			if (moveCounter <= 1) {
 				isTurn = false;
 			}

@@ -3,13 +3,15 @@ import java.util.Scanner;
 
 public class GamePlay {
 
+	boolean isAIGame = true;
+
 	public void printInstructions(Player player1, Player player2, AI computer) {
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Welcome to Dragon Slayer");
 
 		boolean gameStartMenu = true;
-		;
+
 		while (gameStartMenu) {
 			System.out.println("Play [p], Instructions [i]");
 			String answer = scan.next();
@@ -39,14 +41,12 @@ public class GamePlay {
 				if (option == 1) {
 					player1.name = playerName();
 					player2.name = playerName();
-					player2.playerTwoTurn = true;
-					computer.computerTurn = false;
+					isAIGame = false;
 
 				} else if (option == 2) {
 					player1.name = playerName();
 					computer.name = "Computer";
-					player2.playerTwoTurn = false;
-					computer.computerTurn = true;
+					isAIGame = true;
 
 				}
 
@@ -98,7 +98,7 @@ public class GamePlay {
 			if (player.isAI == true){
 				player.CheckTreasureAI(chest);
 			} else {
-			player.CheckTreasure(chest, map);
+				player.CheckTreasure(chest, map);
 			}
 
 		}
@@ -144,7 +144,7 @@ public class GamePlay {
 				if (atTopLeftCorner) {
 					map.PrintMap();
 					System.out.println(player.name + " can't move up anymore");
-				
+
 				} else if (atTopRightCorner) {
 					map.PrintMap();
 					System.out.println(player.name + " can't move up anymore");
@@ -195,8 +195,8 @@ public class GamePlay {
 				} else if (atTopRightCorner) {
 					player.MoveDown(map);
 					map.PrintMap();
-					moveCounter--;
 					enterDoor(player, map);
+					moveCounter--;
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
 					System.out.println(player.name + " can't move up anymore");
@@ -373,15 +373,10 @@ public class GamePlay {
 			break;
 		default:
 			System.out.println(player.name + " entered an empty room.");
-			// System.out.println();
 			break;
 		}
 	}
 
-	/*
-	 * public void CreatePlayer(){ Player player1 = new Player("Player1", 100);
-	 * }
-	 */
 
 	public void PlayerTurn(Player player, Map map) {
 
@@ -402,25 +397,18 @@ public class GamePlay {
 	}
 
 	public void GameTurn(Player player1, Player player2, AI computerPlayer, Map map, GamePlay gamePlay) {
-		boolean stillPlay = true;
 
-		while (player1.playerOneTurn || player2.playerTwoTurn || stillPlay || computerPlayer.computerTurn) {
-			if (player1.playerOneTurn) {
-				System.out.println();
+		if(isAIGame == false){
+			while(player1.health >= 0 || player2.health >=0){
 				PlayerTurn(player1, map);
-				player1.playerOneTurn = false;
-			} else if (player2.playerTwoTurn) {
-				System.out.println();
 				PlayerTurn(player2, map);
-				player1.playerOneTurn = true;
-				player2.playerTwoTurn = false;
-				computerPlayer.computerTurn = false;
-			} else if (computerPlayer.computerTurn) {
-				System.out.println();
+
+			}
+		}
+		else{
+			while(player1.health>=0 || computerPlayer.health >=0){
+				PlayerTurn(player1, map);
 				ComputerTurn(computerPlayer, map, gamePlay);
-				player1.playerOneTurn = true;
-				player2.playerTwoTurn = false;
-				computerPlayer.computerTurn = false;
 			}
 		}
 	}
