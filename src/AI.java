@@ -127,12 +127,12 @@ public class AI extends Player{
 				if (computerMove == 0) {
 					if (atTopLeftCorner) {
 						map.PrintMap();
-						System.out.println("You can't move up anymore");
+						System.out.println(name + " can't move up anymore");
 						
 
 					} else if (atTopRightCorner) {
 						map.PrintMap();
-						System.out.println("You can't move up anymore");
+						System.out.println(name + " can't move up anymore");
 						
 					} else if (atBottomRightCorner) {
 						computer.MoveUp(map);
@@ -146,7 +146,7 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atTopEdge) {
 						map.PrintMap();
-						System.out.println("You can't move up anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atBottomEdge) {
 						computer.MoveUp(map);
 						map.PrintMap();
@@ -185,10 +185,10 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atBottomRightCorner) {
 						map.PrintMap();
-						System.out.println("You can't move down anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atBottomLeftCorner) {
 						map.PrintMap();
-						System.out.println("You can't move down anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atTopEdge) {
 						computer.MoveDown(map);
 						map.PrintMap();
@@ -196,7 +196,7 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atBottomEdge) {
 						map.PrintMap();
-						System.out.println("You can't move down anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atleftEdge) {
 						computer.MoveDown(map);
 						map.PrintMap();
@@ -216,7 +216,7 @@ public class AI extends Player{
 				} else if (computerMove == 2) {
 					if (atTopLeftCorner) {
 						map.PrintMap();
-						System.out.println("You can't move left anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atTopRightCorner) {
 						computer.MoveLeft(map);
 						map.PrintMap();
@@ -230,10 +230,10 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atBottomLeftCorner) {
 						map.PrintMap();
-						System.out.println("You can't move left anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atTopEdge) {
 						map.PrintMap();
-						System.out.println("You can't move left anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atBottomEdge) {
 						computer.MoveLeft(map);
 						map.PrintMap();
@@ -241,7 +241,7 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atleftEdge) {
 						map.PrintMap();
-						System.out.println("You can't move left anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atRightEdge) {
 						computer.MoveLeft(map);
 						map.PrintMap();
@@ -263,10 +263,10 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atTopRightCorner) {
 						map.PrintMap();
-						System.out.println("You can't move right anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atBottomRightCorner) {
 						map.PrintMap();
-						System.out.println("You can't move right anymore");
+						System.out.println(name + " can't move up anymore");
 					} else if (atBottomLeftCorner) {
 						computer.MoveRight(map);
 						map.PrintMap();
@@ -289,7 +289,7 @@ public class AI extends Player{
 						moveCounter--;
 					} else if (atRightEdge) {
 						map.PrintMap();
-						System.out.println("You can't move right anymore");
+						System.out.println(name + " can't move up anymore");
 					} else {
 						computer.MoveRight(map);
 						map.PrintMap();
@@ -314,12 +314,12 @@ public class AI extends Player{
 				gamePlay.battleSequence(computer, gamePlay.randomEnemy(), map);
 				break;
 			case 1:
-				System.out.println("You found a treasure chest!");
+				System.out.println(name + " found a treasure chest!");
 				computer.CheckTreasure(gamePlay.randomTreasure());
 
 				break;
 			default:
-				System.out.println("You entered an empty room.");
+				System.out.println(name + " entered an empty room.");
 				// System.out.println();
 				break;
 			}

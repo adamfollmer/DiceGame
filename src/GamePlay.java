@@ -138,11 +138,11 @@ public class GamePlay {
 			if (playerMove.equals("w")) {
 				if (atTopLeftCorner) {
 					map.PrintMap();
-					System.out.println("You can't move up anymore");
+					System.out.println(player.name + " can't move up anymore");
 				
 				} else if (atTopRightCorner) {
 					map.PrintMap();
-					System.out.println("You can't move up anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atBottomRightCorner) {
 					player.MoveUp(map);
 					map.PrintMap();
@@ -155,7 +155,7 @@ public class GamePlay {
 					moveCounter--;
 				} else if (atTopEdge) {
 					map.PrintMap();
-					System.out.println("You can't move up anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atBottomEdge) {
 					player.MoveUp(map);
 					map.PrintMap();
@@ -194,10 +194,10 @@ public class GamePlay {
 					enterDoor(player, map);
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
-					System.out.println("You can't move down anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
-					System.out.println("You can't move down anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atTopEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
@@ -205,7 +205,7 @@ public class GamePlay {
 					moveCounter--;
 				} else if (atBottomEdge) {
 					map.PrintMap();
-					System.out.println("You can't move down anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atleftEdge) {
 					player.MoveDown(map);
 					map.PrintMap();
@@ -225,7 +225,7 @@ public class GamePlay {
 			} else if (playerMove.equals("a")) {
 				if (atTopLeftCorner) {
 					map.PrintMap();
-					System.out.println("You can't move left anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atTopRightCorner) {
 					player.MoveLeft(map);
 					map.PrintMap();
@@ -239,10 +239,10 @@ public class GamePlay {
 					moveCounter--;
 				} else if (atBottomLeftCorner) {
 					map.PrintMap();
-					System.out.println("You can't move left anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atTopEdge) {
 					map.PrintMap();
-					System.out.println("You can't move left anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atBottomEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
@@ -250,7 +250,7 @@ public class GamePlay {
 					moveCounter--;
 				} else if (atleftEdge) {
 					map.PrintMap();
-					System.out.println("You can't move left anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atRightEdge) {
 					player.MoveLeft(map);
 					map.PrintMap();
@@ -272,10 +272,10 @@ public class GamePlay {
 					moveCounter--;
 				} else if (atTopRightCorner) {
 					map.PrintMap();
-					System.out.println("You can't move right anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atBottomRightCorner) {
 					map.PrintMap();
-					System.out.println("You can't move right anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else if (atBottomLeftCorner) {
 					player.MoveRight(map);
 					map.PrintMap();
@@ -298,7 +298,7 @@ public class GamePlay {
 					moveCounter--;
 				} else if (atRightEdge) {
 					map.PrintMap();
-					System.out.println("You can't move right anymore");
+					System.out.println(player.name + " can't move up anymore");
 				} else {
 					player.MoveRight(map);
 					map.PrintMap();
@@ -362,12 +362,12 @@ public class GamePlay {
 			battleSequence(player, randomEnemy(), map);
 			break;
 		case 1:
-			System.out.println("You found a treasure chest!");
+			System.out.println(player.name + " found a treasure chest!");
 			player.CheckTreasure(randomTreasure(), map);
 
 			break;
 		default:
-			System.out.println("You entered an empty room.");
+			System.out.println(player.name + " entered an empty room.");
 			// System.out.println();
 			break;
 		}

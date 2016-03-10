@@ -62,23 +62,28 @@ public class Player extends Character {
 
 	public void physicalAttack(Enemy enemy) {
 		enemy.health = enemy.health - (playerDice[2].roll * playerDice[0].roll + weapon.generalStatBoost);
+		System.out.println(name + " did " + (playerDice[2].roll * playerDice[0].roll + weapon.generalStatBoost) + " damage to " + enemy.name);
 	}
 
 	public void magicAttack(Enemy enemy) {
 		if (playerDice[3].roll <= 3) {
 			enemy.health = enemy.health - (spells[0].spellDamage * playerDice[0].roll);
+			System.out.println(name + " used " + spells[0].spellName + " and did " +(spells[0].spellDamage * playerDice[0].roll) + " damage.");
 		} else if (playerDice[3].roll <= 7) {
 			enemy.health = enemy.health - (spells[1].spellDamage * playerDice[0].roll);
+			System.out.println(name + " used " + spells[1].spellName + " and did " +(spells[1].spellDamage * playerDice[1].roll) + " damage.");
 		} else {
 			enemy.health = enemy.health - (spells[2].spellDamage * playerDice[0].roll);
+			System.out.println(name + " used " + spells[2].spellName + " and did " +(spells[2].spellDamage * playerDice[2].roll) + " damage.");
 		}
 	}
 
 	public void limitBreak(Enemy enemy) {
 		if (limitBreakStatus >= 100) {
-			enemy.health = enemy.health - (50 * playerDice[0].roll);
+			enemy.health = enemy.health - (50 * playerDice[0].roll + weapon.generalStatBoost);
+			System.out.println(name + " used Limit Break! And did " + (50 * playerDice[0].roll + weapon.generalStatBoost) + " damage to " + enemy.name);
 		} else {
-			System.out.println("You don't have enough energy.");
+			System.out.println(name + " doesn't have enough energy.");
 		}
 	}
 
