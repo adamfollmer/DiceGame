@@ -265,6 +265,9 @@ public class AI extends Player {
 			}
 			computer.status();
 		}
+		if (health <= 50){
+			UseItem();
+		}
 	}
 
 	public void ComputerEnterDoor(AI computer, GamePlay gamePlay, Map map) {
