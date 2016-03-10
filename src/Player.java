@@ -15,7 +15,7 @@ public class Player extends Character {
 	int xCoordiante = 0;
 	int yCoordinate = 0;
 	Dice[] playerDice = new Dice[6];
-
+	boolean isAI = false;
 	boolean playerOneTurn = true;
 	boolean playerTwoTurn = true;
 	
@@ -35,6 +35,7 @@ public class Player extends Character {
 				+ "\n Your armor: " + armor.name + ". It has bonus defense of " + armor.generalStatBoost);
 		System.out.println("Your limit break meter is at " + limitBreakStatus);
 		BackPackContents();
+		System.out.println();
 	}
 
 	public void selectAttack(Enemy enemy) {
@@ -95,7 +96,6 @@ public class Player extends Character {
 		}
 	}
 
-	/*-----------------------------------------------------------------------*/
 	public void MoveUp(Map map) {
 		xCoordiante = ((Map) map).getXCoordinate();
 		yCoordinate = ((Map) map).getYCoordinate();
@@ -201,10 +201,9 @@ public class Player extends Character {
 				EquipNew(chest);
 			} else {
 				System.out.println("You're keeping your old item.");
-				map.PrintMap();
 			}
-
 		}
+		map.PrintMap();
 		System.out.println();
 	}
 
@@ -245,6 +244,30 @@ public class Player extends Character {
 					}
 					backpack.remove(item);
 					break;
+				}
+			}
+		}
+	}
+	
+	public void CheckTreasureAI(Chest chest) {
+		if (chest.itemType.equals("ITEM")) {
+			System.out.println(
+					name + " found a " + chest.name + " that returns " + chest.generalStatBoost + " health when used.");
+			backpack.add((Item) chest);
+		} else {
+			System.out
+					.println(name + " found a " + chest.name + " that has a bonus of " + chest.generalStatBoost + ".");
+			if (chest.itemType.equals("WEAPON")) {
+				if (chest.generalStatBoost > weapon.generalStatBoost) {
+					EquipNew(chest);
+				} else {
+					System.out.println(name + " is keeping its old item.");
+				}
+			} else {
+				if (chest.generalStatBoost > armor.generalStatBoost) {
+					EquipNew(chest);
+				} else {
+					System.out.println(name + " is keeping its old item.");
 				}
 			}
 		}

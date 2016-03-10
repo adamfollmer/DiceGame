@@ -75,7 +75,8 @@ public class GamePlay {
 	}
 
 	public void battleSequence(Player player, Enemy enemy, Map map) {
-		System.out.println("You encountered a " + enemy.name);
+		System.out.println();
+		System.out.println(player.name + " encountered a " + enemy.name);
 		Random rand = new Random();
 		while (player.health >= 0 && enemy.health >= 0) {
 			player.combatRollAndStats(enemy);
@@ -94,7 +95,11 @@ public class GamePlay {
 		if (enemy.enemyIsDead() == true) {
 			Chest chest = enemy.treasure.chest;
 			System.out.println("The enemy dropped a chest!");
+			if (player.isAI == true){
+				player.CheckTreasureAI(chest);
+			} else {
 			player.CheckTreasure(chest, map);
+			}
 
 		}
 	}

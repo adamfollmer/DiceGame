@@ -6,6 +6,7 @@ public class AI extends Player {
 
 	public AI(String name, int health) {
 		super(name, health);
+		isAI = true;
 	}
 
 	public void selectAttack(Enemy enemy) {
@@ -276,11 +277,11 @@ public class AI extends Player {
 			gamePlay.battleSequence(computer, gamePlay.randomEnemy(), map);
 			break;
 		case 1:
-			System.out.println("You found a treasure chest!");
+			System.out.println(name + " found a treasure chest!");
 			computer.CheckTreasure(gamePlay.randomTreasure());
 			break;
 		default:
-			System.out.println("You entered an empty room.");
+			System.out.println(name + " entered an empty room.");
 			// System.out.println();
 			break;
 		}
